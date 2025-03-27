@@ -14,28 +14,60 @@ h3 {
     margin-top: 15%;
 }
 
+
 .formattedCard {
     max-width: 100%;
     border-radius: 5px;
     z-index: 0;
     /* Ensure the image is below the button */
+    
+}
+
+.formattedCard2 {
+    max-width: 100%;
+    border-radius: 5px;
+    z-index: 0;
+    /* Ensure the image is below the button */
+    
+    
 }
 
 .cardContent {
     position: absolute;
     z-index: 1;
+    top : 0%;
+}
+
+.cardContent2{
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    left: 20%;
 }
 
 .position {
-    padding-top: 80%;
+    padding-top: 70%;
     padding-bottom: 0px;
-    padding-left: 25%;
+    padding-left: 35%;
 }
 
 .teamLogo {
-    padding-top: 82%;
+    padding-top: 70%;
     padding-bottom: 0px;
-    padding-left: 40%;
+    padding-left: 50%;
+    border-radius: 50%;
+}
+
+.position2 {
+    padding-top: 70%;
+    padding-bottom: 0px;
+    padding-left: 65%;
+}
+
+.teamLogo2 {
+    padding-top: 70%;
+    padding-bottom: 0px;
+    padding-left: 80%;
     border-radius: 50%;
 }
 
@@ -43,7 +75,15 @@ h3 {
     padding-top: 0px;
     padding-bottom: 0px;
     padding-left: 25%;
+    position: center;
 
+}
+
+.playerName2 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 45%;
+    position: center;
 }
 
 .playerPicture {
@@ -51,11 +91,16 @@ h3 {
     position: relative;
 }
 
+.playerPicture2 {
+    padding-bottom: 0px;
+    position: relative;
+    padding-left: 20%;
+}
+
 .column {
     float: left;
     width: 50%;
 }
-
 
 /* Clear floats after the columns */
 .row:after {
@@ -64,19 +109,18 @@ h3 {
     clear: both;
 }
 
-.column-card-left {
-    float: left;
-    width: 40%;
-}
-
+.column-card-left,
 .column-card-right {
-    float: right;
-    width: 40%;
+    float: left;
+    width: 50%; /* Default width is 50% */
+    transition: width 0.3s ease; /* Smooth transition for width changes */
 }
 
 .column-card-middle {
     float: left;
-    width: 20%;
+    width: 0; /* Default width is 0 */
+    transition: width 0.3s ease; /* Smooth transition for width changes */
+    overflow: hidden; /* Prevent content overflow when the width is 0 */
 }
 
 
@@ -84,6 +128,13 @@ h3 {
     padding-top: -0%;
     margin-top: -3%;
     padding-left: 25%;
+   
+}
+
+.stats2 {
+    padding-top: -0%;
+    margin-top: -3%;
+    padding-left: 45%;
    
 }
 
@@ -96,6 +147,18 @@ h3 {
 .shooting{
     padding-top: 0px;
     padding-left: 180%;
+}
+
+.goals2,
+.gamesPlayed2{
+    padding-top: 0px;
+    padding-left: 300%;
+    padding-right: -80%;
+}
+
+.shooting2{
+    padding-top: 0px;
+    padding-left: 270%;
 }
 
 .blankCard {
