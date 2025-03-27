@@ -21,7 +21,7 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
     ```
 3. Install the required dependencies:
     ```
-    pip install -r requirements.txt
+    pip install flask flask_sqlalchemy flask_login flasgger requests
     ```
 
 ## Usage
@@ -31,6 +31,12 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
     python main.py
     ```
 2. Follow the on-screen instructions to create and manage your fantasy hockey team.
+
+## API Documentation
+
+### How to Access the Documentation
+
+Once the Flask application is running locally, you can access the Swagger UI documentation for the API by navigating to the following route in your browser: /apidocs
 
 ## Contributing
 
