@@ -28,9 +28,13 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
 
 1. Run the program:
     ```
+    cd app
+    ```
+
+    ```
     python main.py
     ```
-2. Follow the on-screen instructions to create and manage your fantasy hockey team.
+3. Follow the on-screen instructions to create and manage your fantasy hockey team.
 
 ## API Documentation
 
