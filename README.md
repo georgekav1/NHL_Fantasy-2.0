@@ -13,7 +13,7 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
 
 1. Clone the repository:
     ```
-    git clone https://github.com/yourusername/NHL_Fantasy.git
+    git clone https://github.com/yourusername/NHL_Fantasy-2.0.git
     ```
 2. Navigate to the project directory:
     ```
