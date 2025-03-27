@@ -13,24 +13,34 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
 
 1. Clone the repository:
     ```
-    git clone https://github.com/yourusername/NHL_Fantasy.git
+    git clone https://github.com/yourusername/NHL_Fantasy-2.0.git
     ```
 2. Navigate to the project directory:
     ```
-    cd NHL_Fantasy
+    cd NHL_Fantasy-2.0
     ```
 3. Install the required dependencies:
     ```
-    pip install -r requirements.txt
+    pip install flask flask_sqlalchemy flask_login flasgger requests
     ```
 
 ## Usage
 
 1. Run the program:
     ```
+    cd app
+    ```
+
+    ```
     python main.py
     ```
-2. Follow the on-screen instructions to create and manage your fantasy hockey team.
+3. Follow the on-screen instructions to create and manage your fantasy hockey team.
+
+## API Documentation
+
+### How to Access the Documentation
+
+Once the Flask application is running locally, you can access the Swagger UI documentation for the API by navigating to the following route in your browser: /apidocs
 
 ## Contributing
 
