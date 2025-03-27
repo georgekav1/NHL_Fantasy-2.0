@@ -17,7 +17,7 @@ This repository contains a program for managing and analyzing NHL fantasy hockey
     ```
 2. Navigate to the project directory:
     ```
-    cd NHL_Fantasy
+    cd NHL_Fantasy-2.0
     ```
 3. Install the required dependencies:
     ```
