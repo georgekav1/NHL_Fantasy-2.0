@@ -1,7 +1,9 @@
 import sqlite3
-from flask import Flask
+from flask import flask, render_template, redirect, url_for, request, flash,abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
+import requests
 from datetime import datetime
 
 # Initialize the Flask app
