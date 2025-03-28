@@ -1,3 +1,4 @@
+
 #Title {
     font-size: 50px;
     color: #ffffff;
@@ -7,44 +8,46 @@
 
 .form {
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     margin-top: 50px;
     font-size: 40px;
     margin-bottom: 50px;
 }
 
-#label {
+#label, #label2 {
     font-size: 30px;
     color: #ffffff;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Add spacing below each label */
 }
 
-.input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#score {
+#score, #name {
     font-size: 20px;
     padding: 10px;
-    margin-right: 10px; /* Add some space between the text box and the button */
+    margin-bottom: 20px; /* Add spacing below each input box */
+    width: 50%; /* Set a consistent width for the input boxes */
+    text-align: center; /* Center-align text inside the input boxes */
+    border-radius: 10px; /* Rounded corners for input boxes */
+    border: 2px solid #000000; /* White border for input boxes */
+    
 }
 
 #setButton {
-    font-size: 20px;
+    font-size: 30px;
     color: #ffffff;
     background-color: #000000;
     border: none;
     padding: 10px 20px;
     border-radius: 20%;
     cursor: pointer;
+    margin-top: 10px; /* Add spacing above the button */
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 45%;
+    width: 10%;
 }
 
 #setButton:hover {

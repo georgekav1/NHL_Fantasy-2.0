@@ -1,5 +1,7 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +11,7 @@
     <link rel="stylesheet" href="../static/CSS/components/container.css">
     <link rel="stylesheet" href="../static/CSS/components/basics.css">
 </head>
+
 <body>
     <div class="container">
         <h1 id="Title">Pass and Play</h1>
@@ -16,6 +19,10 @@
             <label id="label" for="score">Set the score you're going to:</label>
             <div class="input-container">
                 <input type="text" id="score" name="score">
+                <br>
+                <label id="label2" for="name">What is player 2's name:</label>
+                <br>
+                <input type="text" id="name" name="name">
                 <input type="submit" id="setButton" value="Set">
             </div>
         </form>
@@ -25,4 +32,6 @@
 </body>
 <script src="../static/JS/fetch_player_list.js"></script>
 <script src="../static/JS/firstToX.js"></script>
+<script src="../../static/JS/higherOrLower.js"></script>
+
 </html>
