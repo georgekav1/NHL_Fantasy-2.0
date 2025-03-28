@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, url_for, request, flash,abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
@@ -12,7 +13,7 @@ swagger = Swagger(app)
 
 # App Configuration
 app.config['SECRET_KEY'] = 'your_secret_key'  # You should change this to a secret key
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///users.db"  # SQLite database
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), '../instance/users.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialise SQLAlchemy and login manager
@@ -319,7 +320,6 @@ def admin_home():
     return render_template("Admin/adminHome.html", username=current_user.username)
 
 @app.route("/admin_table")
-@login_required
 def admin_table():
     # Get all records from the admin table
     admins = Admin.query.all()
@@ -328,7 +328,6 @@ def admin_table():
     return render_template("Admin/admin_table.html", admins=admins)
 
 @app.route("/manageUsers")
-@login_required
 def manage_users():
     # Get all users from the database
     users = User.query.all()
