@@ -1,6 +1,6 @@
-# NHL Fantasy
+# Hockey Heroes
 
-Welcome to NHL Fantasy! This project is a Top Trumps-style game that allows users to create and manage their fantasy NHL teams, track player statistics, and make decisions based on real-time data analysis of NHL players' stats.
+Welcome to Hockey Heroes! This project is a Top Trumps-style game that allows users to create and manage their fantasy NHL teams, track player statistics, and make decisions based on real-time data analysis of NHL players' stats.
 
 ---
 
@@ -74,6 +74,15 @@ http://localhost:5000/apidocs
 The API documentation will provide detailed information about each route, available parameters, and expected responses.
 
 ---
+
+## Testing
+```bash
+pip install pytest
+```
+
+```bash
+pytest tests/app_tests.py
+```
 
 ## Contributing
 

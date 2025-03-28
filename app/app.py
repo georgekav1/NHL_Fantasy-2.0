@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialise SQLAlchemy and login manager
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'user_login'  
+login_manager.login_view = 'login'  
 
 # User table for the database
 class User(UserMixin, db.Model):
