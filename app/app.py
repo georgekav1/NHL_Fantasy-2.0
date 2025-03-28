@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-    last_login = db.Column(db.DateTime, default=datetime, onupdate=datetime)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     player_rank = db.Column(db.String(50), nullable=False, default="Bronze")
     total_games_played = db.Column(db.Integer, nullable=False, default=0)
     wins = db.Column(db.Integer, nullable=False, default=0)

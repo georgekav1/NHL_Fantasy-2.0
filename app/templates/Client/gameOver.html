@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Over</title>
     <link href="../static/CSS/components/card.css" rel="stylesheet" type="text/css">
+    <link href="../static/CSS/components/button.css" rel="stylesheet" type="text/css">
     <link href="../static/CSS/components/container.css" rel="stylesheet" type="text/css">
     <link href="../static/CSS/pages/index.css" rel="stylesheet" type="text/css">
 </head>
@@ -32,7 +33,7 @@
         </div><br><br>
 
         <div class="redirect-message">
-            Redirecting back to home...
+            <a href="/home" class="button-class">Home</a>
         </div>
     </div>
     <script>
@@ -52,18 +53,16 @@
 
         // Display the winner message
         const resultMessage = document.getElementById("resultMessage");
-        if (roundWinner === "user") {
+        if (userScore === targetScore) {
             resultMessage.textContent = "Congratulations! You won the game!";
-        } else if (roundWinner === "computer") {
+        } else if (computerScore === targetScore) {
             resultMessage.textContent = "The computer won the game. Better luck next time!";
         } else {
-            resultMessage.textContent = "It's a tie!";
+            resultMessage.textContent = "something fucked up";
         }
 
-        // Optionally, redirect after a few seconds
-        setTimeout(() => {
-            window.location.href = "/home"; // Redirect to home page after 5 seconds
-        }, 5000);
+        
+        
 
     sessionStorage.removeItem("userScore");
     sessionStorage.removeItem("computerScore");
