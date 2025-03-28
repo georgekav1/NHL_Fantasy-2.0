@@ -31,13 +31,16 @@
     </div>
 </body>
 <script>
-    function startPassAndPlay() {
-        sessionStorage.setItem("gameMode", "passAndPlay");
-        window.location.href = "/pickUpCard"; // Redirect to the "Pick Up Card" page
-    }
 </script>
 <script src="../static/JS/fetch_player_list.js"></script>
 <script src="../static/JS/firstToX.js"></script>
 <script src="../../static/JS/higherOrLower.js"></script>
-
+<script>
+    function startPassAndPlay() {
+        const player2Name = document.getElementById("player2Name").value;
+        sessionStorage.setItem("gameMode", "passAndPlay");
+        sessionStorage.setItem("player2Name", player2Name); // Store Player 2's name
+        window.location.href = "/player1Turn"; // Redirect to Player 1's turn
+    }
+</script>
 </html>
