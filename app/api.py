@@ -45,7 +45,7 @@ from datetime import datetime
 
 DB_file = r"instance\users.db"
 
-def updateUserRecord(id, player_rank, total_games_played, wins, losses, win_rate):
+def updateUserRecord(username, player_rank, total_games_played, wins, losses, win_rate):
     with sqlite3.connect(DB_file) as conn:
         cursor = conn.cursor()
 
@@ -54,13 +54,13 @@ def updateUserRecord(id, player_rank, total_games_played, wins, losses, win_rate
             UPDATE user
             SET total_games_played = total_games_played + 1,
                 wins = wins + 1,
-            WHERE id = ; ?""", (wins, total_games_played,id))
+                WHERE username = ; ?""", (wins, total_games_played,username))
         else:
             cursor.execute("""
             UPDATE user
             SET total_games_played = total_games_played + 1,
                 losses = losses + 1
-            WHERE id = ?""", (losses, total_games_played, id))
+                WHERE id = ?""", (losses, total_games_played, username))
         
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
         print("Tables:", cursor.fetchall())  # Check if 'users' table exists
