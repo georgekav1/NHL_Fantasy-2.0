@@ -1,5 +1,6 @@
 let selectedStat = ""; // Variable to store the selected stat
 let userChoice = ""; // Variable to store the user's choice (Higher or Lower)
+let statId = "";
 
 
 
@@ -46,6 +47,35 @@ function hideHigherOrLowerBox() {
     rightColumn.style.width = '50%'; // Reset the right column width to 50%
 }
 
+function compare_stats(stat,choice){
+    user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
+    console.log(user)
+    opp = document.getElementById(`opp-${stat}`)
+    console.log(opp)
+    if(choice == "Higher"){
+        if(user>opp){
+            window.location.href = "/endOfRound?winner=0";
+        }
+        else if(opp>user){
+            window.location.href  = "/endOfRound?winner=1"
+        }
+        else{
+            window.location.href  = "/endOfRound?winner=3"
+        }
+    }else{
+        if(user<opp){
+            window.location.href  = "/endOfRound?winner=0"
+        }
+        else if(opp<user){
+            window.location.href  = "/endOfRound?winner=1"
+        }
+        else{
+            window.location.href  = "/endOfRound?winner=3"
+        }
+    }
+}
+
+
 // Add event listeners for the "Higher" and "Lower" buttons
 document.getElementById('higherChosen').addEventListener('click', () => {
     userChoice = "Higher";
@@ -59,6 +89,7 @@ document.getElementById('higherChosen').addEventListener('click', () => {
     }, 3000);
 
     on_computer_turn();
+    compare_stats(statId,userChoice);
 });
 
 document.getElementById('lowerChosen').addEventListener('click', () => {
@@ -73,7 +104,11 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
     }, 3000);
 
     on_computer_turn();
+    compare_stats(statId,userChoice);
 });
+
+
+
 
 // Add a click event listener to each stat element
 statElements.forEach(element => {
@@ -87,7 +122,9 @@ statElements.forEach(element => {
             userSelectionText.textContent = "";
         } else {
             selectedStat = clickedStat;
+            statId = event.target.id.split('-')[1];
             console.log("Selected stat:", selectedStat);
+            console.log("Selected stat id:", statId);
             showHigherOrLowerBox(); // Show the box when a stat is selected
 
             const statText = document.querySelector('.higherOrLowerBox h2');

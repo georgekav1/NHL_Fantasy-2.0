@@ -95,6 +95,11 @@ async function on_page_load(){
     
         
 };
+
+function compare_stats(stat){
+    document.getElementById('player-{stat}')
+}
+
 async function on_computer_turn() {
     // Add a delay before showing the computer's card stats
     setTimeout(async () => {
@@ -102,6 +107,7 @@ async function on_computer_turn() {
         flipcard();
         populateCard("opp", oppStats);
     }, 3000); // 3-second delay to allow the higher or lower box to disappear
+
 }
 
 function flipcard(){
