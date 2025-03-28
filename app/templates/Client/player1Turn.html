@@ -118,29 +118,39 @@
         <div class="column-card-right">
 
             <div class=blankCard>
-                <div class="opponentName">
+                <div class="player2Name">
                     <h4>
-                        Player 2
+                        {{ player2Name }}
+                        <!-- Player 2 Name -->
                     </h4>
                 </div>
                 <div id="oppCard">
                 <img class="playerCard" src="../../static/images/PlayerCard.png" alt="Player Card" height="800"
                     width="800">
                 </div>  
-
-                    
             </div>
         </div>
     </div>
 
-   
-
-    
-
-
 </body>
 <script src="../../static/JS/cardStats.js"></script>
-<script src="../../static/JS/higherOrLower.js"></script>
+<script src="../../static/JS/passHigherOrLower.js"></script>
 <script src="../../static/JS/cardStats.js"></script>
+<script src>document.addEventListener("DOMContentLoaded", () => {
+    const player2Name = sessionStorage.getItem("player2Name");
+    document.querySelector(".opponentName h4").textContent = player2Name;
+
+    document.getElementById("higherChosen").addEventListener("click", () => {
+        // Logic for Player 1 choosing "Higher"
+        sessionStorage.setItem("player1Choice", "Higher");
+        window.location.href = "/player2Turn"; // Redirect to Player 2's turn
+    });
+
+    document.getElementById("lowerChosen").addEventListener("click", () => {
+        // Logic for Player 1 choosing "Lower"
+        sessionStorage.setItem("player1Choice", "Lower");
+        window.location.href = "/player2Turn"; // Redirect to Player 2's turn
+    });
+});</script>
 
 </html>
