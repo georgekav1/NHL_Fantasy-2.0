@@ -7,6 +7,7 @@ import requests
 from app import User
 from datetime import datetime
 
+ALLOWED_IPS = {""}
 # # Initialize the Flask app
 # api = Flask(__name__)
 
@@ -45,22 +46,29 @@ from datetime import datetime
 
 DB_file = r"instance\users.db"
 
-def updateUserRecord(id, player_rank, total_games_played, wins, losses, win_rate):
+def check_ip():
+    if request.remote_addr not in ALLOWED_IPS:
+        print("not allowed")
+        return jsonify({"error": "Unauthorized IP address"}), 403
+    
+def dosomething(username):
+    print(username)
+
+def updateUserRecord(username, win):
     with sqlite3.connect(DB_file) as conn:
         cursor = conn.cursor()
 
         if win:
             cursor.execute("""
             UPDATE user
-            SET total_games_played = total_games_played + 1,
-                wins = wins + 1,
-            WHERE id = ; ?""", (wins, total_games_played,id))
+            SET total_games_played = total_games_played + 10,
+                wins = wins + 1
+            WHERE username = ?""", (username,))
         else:
             cursor.execute("""
             UPDATE user
             SET total_games_played = total_games_played + 1,
                 losses = losses + 1
-            WHERE id = ?""", (losses, total_games_played, id))
+            WHERE username = ?""", (username,))
         
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
-        print("Tables:", cursor.fetchall())  # Check if 'users' table exists
+        conn.commit()  # Commit the changes to the database

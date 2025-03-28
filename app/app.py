@@ -99,6 +99,7 @@ def some():
 @app.route("/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        global username
         username = request.form['username']
         password = request.form['password']
 
@@ -107,7 +108,9 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             update_last_login(user)
-            print(user.id)
+            api.check_ip()
+            api.updateUserRecord(username, True)  # Update user record in the database
+            user.update_stats()  # Update user stats after game ends
             return redirect(url_for('home')), username  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
