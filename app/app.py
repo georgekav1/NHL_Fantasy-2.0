@@ -5,24 +5,37 @@ from flasgger import Swagger
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import datetime
-import api
+from api import create_api
+from extensions import db 
+from flask_restful import Api
+
 
 app = Flask(__name__)
 swagger = Swagger(app)
+global link
 
 # App Configuration
 app.config['SECRET_KEY'] = 'your_secret_key'  # You should change this to a secret key
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///users.db"  # SQLite database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db.init_app(app)
+
 # Initialise SQLAlchemy and login manager
-db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'  
+
+with app.app_context():
+    db.create_all()
+
+# Initialize the API
+create_api(app)  # Call the function to set up the API
 
 # User table for the database
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
+    __table_args__ = {'extend_existing': True} 
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=True, nullable=False)
@@ -61,6 +74,7 @@ class User(UserMixin, db.Model):
 # Admin table for the database
 class Admin(UserMixin, db.Model):
     __tablename__ = 'admin'
+    __table_args__ = {'extend_existing': True}
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=True, nullable=False)
@@ -69,11 +83,6 @@ class Admin(UserMixin, db.Model):
     last_login = db.Column(db.DateTime, default=datetime, onupdate=datetime.utcnow)
     date_joined = db.Column(db.DateTime, default=datetime.utcnow)
 
-# Initialising the database
-def create_tables():
-    with app.app_context():
-        db.create_all()
-create_tables()
 
 # User loader for Flask-Login
 @login_manager.user_loader
@@ -99,7 +108,7 @@ def some():
 @app.route("/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        global username
+        
         username = request.form['username']
         password = request.form['password']
 
@@ -108,10 +117,13 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             update_last_login(user)
-            api.check_ip()
-            api.updateUserRecord(username, True)  # Update user record in the database
-            user.update_stats()  # Update user stats after game ends
-            return redirect(url_for('home')), username  # Go to home page after login
+           
+            # Call the function to do something with the username
+            
+            # api.check_ip()
+            # api.updateUserRecord(username, True)  # Update user record in the database
+            # user.update_stats()  # Update user stats after game ends
+            return redirect(url_for('home'))  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
 
@@ -189,9 +201,16 @@ def register():
         description: Invalid input
     """
     if request.method == 'POST':    
-        username = request.form['username']
-        password = request.form['password']
-        email = request.form['email']
+        link = 'http://127.0.0.1:5002/nhlapi'
+        username = request.form.get('username')
+        password = request.form.get('password')
+        email = request.form.get('email')
+
+        data  = {
+            'username': username,
+            'password': password,
+            'email': email
+            }
 
         # Check if the username or email already exists
         existing_user = User.query.filter_by(username=username).first()
@@ -207,14 +226,27 @@ def register():
         # Password hashing
         hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
 
+        # Create a new user and add to the database
         new_user = User(username=username, password=hashed_password, email=email)
-
         db.session.add(new_user)
         db.session.commit()
 
-        flash("Registration successful!", 'success')
+        
+
+        # try:
+        #     response = requests.post('http://127.0.0.1:5002/nhlapi', json=data)  # Send JSON data directly
+
+        #     if response.status_code == 200:
+        #         flash("Registration successful!", 'success')
+        #     else:
+        #         flash("Error while adding user to API", 'danger')
+        # except requests.exceptions.RequestException as e:
+        #     flash(f"Error while communicating with API: {str(e)}", 'danger')
+
         return redirect(url_for('login'))
+    
     return render_template("Client/register.html")
+    
 
 @app.route("/logout")
 @login_required
