@@ -142,6 +142,14 @@ def vs_computer():
 def pass_and_play():
     return render_template("Client/passAndPlay.html")
 
+@app.route("/Player1Turn")
+def player1_turn():
+    return render_template("Client/player1Turn.html", username=current_user.username)
+
+@app.route("/Player2Turn")
+def player2_turn():
+    return render_template("Client/player2Turn.html", username=current_user.username)
+
 @app.route("/pickUpCard")
 def pick_up_card():
     return render_template("Client/pickUpCard.html")
@@ -160,7 +168,7 @@ def card():
 
 @app.route("/computersTurn")
 def computers_turn():
-    return render_template("Client/computersTurn.html")
+    return render_template("Client/computersTurn.html", username=current_user.username)
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():

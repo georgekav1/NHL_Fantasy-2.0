@@ -103,7 +103,7 @@ document.getElementById('higherChosen').addEventListener('click', () => {
 
     setTimeout(() => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
-    }, 10000);
+    }, 3000);
 
     
     setTimeout(() => {
@@ -122,7 +122,7 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
 
     setTimeout(() => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
-    }, 10000);
+    }, 3000);
 
     
     setTimeout(() => {
