@@ -42,3 +42,11 @@
   z-index: 0;
   /* Ensure the image is below the button */
 }
+
+body {
+  background-image: url("../../images/vsBackround-resized-again.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
