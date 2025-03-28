@@ -41,6 +41,6 @@ if (userScore >= targetScore || computerScore >= targetScore) {
     }
 
     setTimeout(() => { 
-        window.location.href = "/card"; 
+        window.location.href = "/pickUpCard"; 
     }, 5000);
 }
