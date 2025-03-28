@@ -45,7 +45,7 @@ Navigate to the `app` directory and run the app:
 
 ```bash
 cd app
-python main.py
+python app.py
 ```
 
 ### 2. Access the Game:
