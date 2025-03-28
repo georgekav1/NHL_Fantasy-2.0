@@ -16,47 +16,10 @@
 
     <div class="row">
         <div class="column-card-left">
-             <div class=blankCard>
-                <div class="opponentName">
-                    <h4>
-                        Player 2
-                    </h4>
-                </div>
-                <div id="oppCard">
-                <img class="playerCard" src="../../static/images/PlayerCard.png" alt="Player Card" height="800"
-                    width="800">
-                </div>  
-
-                    
-            </div>
-        <div class="column-card-middle">
-            <div class="higherOrLowerBox" style="display: none;">
-                <h2>{{stat}} Selected, Higher or Lower?</h2>
-                <div class="row">
-                    <div class="column2">
-                        <button id="higherChosen">
-                            <img class="higher" src="../../static/images/green.png" alt="higher" height="50" width="50">
-                        </button>
-                    </div>
-                    <div class="column2">
-                        <h3> OR</h3>
-                    </div>
-                    <div class="column2">
-                        <button id="lowerChosen">
-                            <img class="lower" src="../../static/images/red-arrow.png" alt="lower" height="50" width="50">
-                        </button>
-                    </div>
-                </div>
-                <p class="userSelection"></p> <!-- This will display the user's choice -->
-                <img id="penguin">
-            </div>
-        </div>
-        <div class="column-card-right">
             <div class="card" id="cardstats">
                 <div class="usersName">
                     <h4>
-                        {{ username }}
-                        <!-- User -->
+                        Player 2
                     </h4>
                 </div>
 
@@ -128,7 +91,43 @@
                 </div>
             </div>
         </div>
-           
+        <div class="column-card-middle">
+            <div class="higherOrLowerBox" style="display: none;">
+                <h2>{{stat}} Selected, Higher or Lower?</h2>
+                <div class="row">
+                    <div class="column2">
+                        <button id="higherChosen">
+                            <img class="higher" src="../../static/images/green.png" alt="higher" height="50" width="50">
+                        </button>
+                    </div>
+                    <div class="column2">
+                        <h3> OR</h3>
+                    </div>
+                    <div class="column2">
+                        <button id="lowerChosen">
+                            <img class="lower" src="../../static/images/red-arrow.png" alt="lower" height="50" width="50">
+                        </button>
+                    </div>
+                </div>
+                <p class="userSelection"></p> <!-- This will display the user's choice -->
+                <img id="penguin">
+            </div>
+        </div>
+        <div class="column-card-right">
+
+            <div class=blankCard>
+                <div class="opponentName">
+                    <h4>
+                        {{ username }}
+                    </h4>
+                </div>
+                <div id="oppCard">
+                <img class="playerCard" src="../../static/images/PlayerCard.png" alt="Player Card" height="800"
+                    width="800">
+                </div>  
+
+                    
+            </div>
         </div>
     </div>
 
