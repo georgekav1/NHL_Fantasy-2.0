@@ -299,7 +299,8 @@ body {
 
 /* Styling for the label (User/Computer) */
 #userLabel,
-#computerLabel {
+#computerLabel,
+#player2Label {
     display: block;
     /* Makes the label appear above the score */
     font-size: 1em;
@@ -312,7 +313,8 @@ body {
 
 /* Styling for the scores */
 #userScore,
-#computerScore {
+#computerScore,
+#player2Score {
     font-size: 2.75em;
     /* Large font size for the score */
     font-weight: bold;
@@ -322,7 +324,7 @@ body {
     color: chartreuse;
 }
 
-#computerScore {
+#computerScore, #player2Score {
     color: crimson;
 }
 

@@ -1,5 +1,7 @@
+// This script handles the end of a turn in a card game, updating scores and redirecting players based on the game state.
+
 // Retrieve target score from sessionStorage
-let targetScore = parseInt(sessionStorage.getItem("targetScore")) || 10; 
+let targetScore = parseInt(sessionStorage.getItem("targetScore")) || 10;
 document.getElementById("firstToX").textContent = `First to: ${targetScore}`;
 
 // Retrieve previous scores or initialize them
@@ -24,8 +26,8 @@ sessionStorage.setItem("userScore", userScore);
 sessionStorage.setItem("player2Score", player2Score);
 
 // Update displayed scores
-document.getElementById("userScore").textContent = `Player 1: ${userScore}`;
-document.getElementById("player2Score").textContent = `Player 2: ${player2Score}`;
+document.getElementById("userScore").textContent = `P1: ${userScore}`;
+document.getElementById("player2Score").textContent = `P2: ${player2Score}`;
 
 // Check if the game is over
 if (userScore >= targetScore || player2Score >= targetScore) {
@@ -42,16 +44,28 @@ if (userScore >= targetScore || player2Score >= targetScore) {
         resultMessage.textContent = "It's a tie!";
     }
 
-    setTimeout(() => { 
-    const previousUrl = document.referrer;
+    // Switch turn after the round
+    let nextTurn = sessionStorage.getItem("turn") === "player1" ? "player2" : "player1";
+    sessionStorage.setItem("turn", nextTurn);
 
-    // Check if the previous URL includes "pickUpCard"
-    if (previousUrl.includes("pickUpCard")) {
-        window.location.href = "/player1Turn"; 
-    } else {
-        // If not, navigate to "pass.html"
-        window.location.href = "/pickUpCard"; 
-    }
-}, 5000);
+    // Redirect to the correct turn page
+    setTimeout(() => {
+        window.location.href = nextTurn === "player1" ? "/player1Turn" : "/player2Turn";
+    }, 5000);
+
+    setTimeout(() => {
+        const previousUrl = document.referrer;
+
+        // Check if the previous URL includes "pickUpCard"
+        if (previousUrl.includes("pickUpCard")) {
+            window.location.href = "/player1Turn"; 
+        } else {
+            // If not, navigate to "pass.html"
+            window.location.href = "/pass"; 
+        }
+    }, 5000);
+
+console.log("Winner:", winner);
+console.log("User Score (Player 1):", userScore);
+console.log("Player 2 Score:", player2Score);
 }
-

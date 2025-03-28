@@ -24,9 +24,9 @@
     } else if (lastTurn === "user") {
         document.getElementById("pickCard").setAttribute("href", "/computersTurn");
     } else if (lastTurn === "player1") {
-        document.getElementById("pickCard").setAttribute("href", "/player1Turn");
-    } else if (lastTurn === "player2") {
         document.getElementById("pickCard").setAttribute("href", "/player2Turn");
+    } else if (lastTurn === "player2") {
+        document.getElementById("pickCard").setAttribute("href", "/player1Turn");
     } else if (sessionStorage.getItem("gameMode") === "passAndPlay") {
         // Redirect to player1Turn if the game mode is "passAndPlay"
         document.getElementById("pickCard").setAttribute("href", "/player1Turn");

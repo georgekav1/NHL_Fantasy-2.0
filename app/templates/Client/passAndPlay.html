@@ -19,10 +19,10 @@
             <div class="input-container">
                 <input type="text" id="score" name="score">
                 <br>
-                <label id="label2" for="name">What is player 2's name:</label>
+                <label id="label" for="name">What is Player 2's name?</label>
                 <br>
                 <input type="text" id="name" name="name">
-                <input type="submit" id="setButton" value="Set">
+                <input onclick="startPassAndPlay()" type="submit" id="setButton" value="Set">
             </div>
         </form>
 
@@ -31,22 +31,13 @@
 </body>
 
 <script>
-    // Attach an event listener to the form to handle submission
-    document.getElementById("scoreForm").addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the form from submitting and refreshing the page
-
-        // Get the values of the input fields
-        const player2Name = document.getElementById("name").value;
-        const score = document.getElementById("score").value;
-
-        // Store the game mode, player 2's name, and score in sessionStorage
-        sessionStorage.setItem("gameMode", "passAndPlay");
-        sessionStorage.setItem("player2Name", player2Name);
-        sessionStorage.setItem("targetScore", score);
-
-        // Redirect to the "Pick Up Card" page
-        window.location.href = "/pickUpCard";
-    });
+    function startPassAndPlay() {
+        const playerName = document.getElementById("name").value; // Get the name from the input field
+        sessionStorage.setItem("player2Name", playerName); // Store the name in sessionStorage
+        sessionStorage.setItem("gameMode", "passAndPlay"); // Set the game mode to "passAndPlay"
+        window.location.href = "/pickUpCard"; // Redirect to the "Pick Up Card" page
+    };
 </script>
-
+<script src="../static/JS/fetch_player_list.js"></script>
+<script src="../static/JS/firstToX.js"></script>
 </html>

@@ -2,24 +2,8 @@ let selectedStat = ""; // Variable to store the selected stat
 let userChoice = ""; // Variable to store the user's choice (Higher or Lower)
 let statId = "";
 
-
-
 // Select all elements with the class "higherOrLower"
 const statElements = document.querySelectorAll('.higherOrLower');
-
-// function penguin_attack() {
-//     setTimeout(() => {
-//         document.getElementById('penguin').src = "../../static/images/loading-bar.gif";
-//         setTimeout(() => {
-//             document.getElementById('penguin').src = ""; // Hide the gif by clearing the src
-
-//             // Hide the higherOrLowerBox when the GIF is hidden
-//             const higherOrLowerBox = document.querySelector('.higherOrLowerBox');
-//             higherOrLowerBox.style.display = 'none';
-//         }, 4000);
-//     }, 500);
-//     on_computer_turn();
-// }
 
 // Function to show the higherOrLowerBox and adjust column widths
 function showHigherOrLowerBox() {
@@ -47,54 +31,49 @@ function hideHigherOrLowerBox() {
     rightColumn.style.width = '50%'; // Reset the right column width to 50%
 }
 
-function compare_stats(stat,choice){
-    console.log("compare stats called", stat, choice);
+function compare_stats(stat, choice) {
+    console.log("compare_stats called", stat, choice);
 
-    if(stat == "height"){
-        let heightText = document.getElementById(`player-${stat}`).textContent.trim();
-        let [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        user = feet * 12 + (inches || 0); // Default inches to 0 if not present
-        console.log(user);
+    let turn = sessionStorage.getItem("turn"); // Check whose turn it is
+    console.log("Current Turn:", turn);
 
-        heightText = document.getElementById(`opp-${stat}`).textContent.trim();
-        [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        opp = feet * 12 + (inches || 0); // Default inches to 0 if not present
-        console.log(opp);
-    }else{
-        user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
-        console.log(user)
-        opp = parseFloat(document.getElementById(`opp-${stat}`).textContent.trim());
-        console.log(opp)
+    let playerStat, opponentStat;
+
+    if (turn === "player1") {
+        playerStat = `player-${stat}`;
+        opponentStat = `opp-${stat}`;
+    } else {
+        playerStat = `opp-${stat}`;
+        opponentStat = `player-${stat}`;
     }
-    if(isNaN(user) || isNaN(opp)){ 
+
+    if (stat === "height") {
+        let heightText = document.getElementById(playerStat).textContent.trim();
+        let [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
+        user = feet * 12 + (inches || 0);
+        
+        heightText = document.getElementById(opponentStat).textContent.trim();
+        [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
+        opp = feet * 12 + (inches || 0);
+    } else {
+        user = parseFloat(document.getElementById(playerStat).textContent.trim());
+        opp = parseFloat(document.getElementById(opponentStat).textContent.trim());
+    }
+
+    if (isNaN(user) || isNaN(opp)) { 
         console.error("Invalid stat value");
         return;
     }
-    if(choice == "Higher"){
-        if(user>opp){
-            window.location.href = "/endOfTurn?winner=0";
-        }
-        else if(opp>user){
-            window.location.href  = "/endOfTurn?winner=1"
-        }
-        else{
-            window.location.href  = "/endOfTurn?winner=3"
-        }
-    }else{
-        if(user<opp){
-            window.location.href  = "/endOfTurn?winner=0"
-        }
-        else if(opp<user){
-            window.location.href  = "/endOfTurn?winner=1"
-        }
-        else{
-            window.location.href  = "/endOfTurn?winner=3"
-        }
+
+    let winner;
+    if (choice === "Higher") {
+        winner = user > opp ? (turn === "player1" ? 0 : 1) : (opp > user ? (turn === "player1" ? 1 : 0) : 3);
+    } else {
+        winner = user < opp ? (turn === "player1" ? 0 : 1) : (opp < user ? (turn === "player1" ? 1 : 0) : 3);
     }
+    
+    window.location.href = `/endOfTurn?winner=${winner}`;
 }
-
-
-
 
 // Add event listeners for the "Higher" and "Lower" buttons
 document.getElementById('higherChosen').addEventListener('click', () => {
@@ -135,9 +114,6 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
         compare_stats(statId,userChoice);
     }, 10000);
 });
-
-
-
 
 // Add a click event listener to each stat element
 statElements.forEach(element => {
