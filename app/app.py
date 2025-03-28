@@ -5,6 +5,7 @@ from flasgger import Swagger
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import datetime
+import api
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -88,10 +89,17 @@ def update_last_login(user):
     user.last_login = datetime.utcnow()
     db.session.commit()
 
+def some():
+    return User
+
+
+
+
 # All Routes
 @app.route("/", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        global username
         username = request.form['username']
         password = request.form['password']
 
@@ -100,7 +108,10 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             update_last_login(user)
-            return redirect(url_for('home'))  # Go to home page after login
+            api.check_ip()
+            api.updateUserRecord(username, True)  # Update user record in the database
+            user.update_stats()  # Update user stats after game ends
+            return redirect(url_for('home')), username  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
 
@@ -346,4 +357,4 @@ def player_profile(player_id):
 
 # Main entry point for running the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5002)  # Set debug=True for development purposes
