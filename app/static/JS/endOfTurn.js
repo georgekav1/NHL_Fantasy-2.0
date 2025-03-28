@@ -4,7 +4,7 @@
 let targetScore = parseInt(sessionStorage.getItem("targetScore")) || 10;
 document.getElementById("firstToX").textContent = `First to: ${targetScore}`;
 
-// Retrieve previous scores or initialize them
+// Retrieve previous scores or initialise them
 let userScore = parseInt(sessionStorage.getItem("userScore")) || 0;
 let player2Score = parseInt(sessionStorage.getItem("player2Score")) || 0;
 
@@ -65,7 +65,4 @@ if (userScore >= targetScore || player2Score >= targetScore) {
         }
     }, 5000);
 
-console.log("Winner:", winner);
-console.log("User Score (Player 1):", userScore);
-console.log("Player 2 Score:", player2Score);
 }

@@ -21,19 +21,12 @@
     margin-top: 70%;
 }
 
-.higher{
-    
-}
-
-.lower{
-   
-}
 
 /* Responsive styling for smaller screens */
 @media screen and (max-width: 430px) {
     .higherOrLowerBox {
-        margin-top: 20px; /* Adjust spacing for smaller screens */
-        padding: 20px; /* Add more padding for better appearance */
+        margin-top: 20px; 
+        padding: 20px; 
     }
 
     .row {

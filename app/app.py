@@ -6,17 +6,16 @@ from flasgger import Swagger
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import datetime
-from api import create_api
-from extensions import db 
+from app.api import create_api
+from app.extensions import db 
 from flask_restful import Api
-
 
 app = Flask(__name__)
 swagger = Swagger(app)
 global link
 
 # App Configuration
-app.config['SECRET_KEY'] = 'your_secret_key'  # You should change this to a secret key
+app.config['SECRET_KEY'] = 'verysecretkey'  
 app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), '../instance/users.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -102,9 +101,6 @@ def update_last_login(user):
 def some():
     return User
 
-
-
-
 # All Routes
 @app.route("/", methods=['GET', 'POST'])
 def login():
@@ -117,13 +113,8 @@ def login():
 
         if user and check_password_hash(user.password, password):
             login_user(user)
-            update_last_login(user)
+            update_last_login(user)            
            
-            # Call the function to do something with the username
-            
-            # api.check_ip()
-            # api.updateUserRecord(username, True)  # Update user record in the database
-            # user.update_stats()  # Update user stats after game ends
             return redirect(url_for('home'))  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
@@ -260,18 +251,6 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        
-
-        # try:
-        #     response = requests.post('http://127.0.0.1:5002/nhlapi', json=data)  # Send JSON data directly
-
-        #     if response.status_code == 200:
-        #         flash("Registration successful!", 'success')
-        #     else:
-        #         flash("Error while adding user to API", 'danger')
-        # except requests.exceptions.RequestException as e:
-        #     flash(f"Error while communicating with API: {str(e)}", 'danger')
-
         return redirect(url_for('login'))
     
     return render_template("Client/register.html")
@@ -372,6 +351,7 @@ def admin_home():
     return render_template("Admin/adminHome.html", username=current_user.username)
 
 @app.route("/admin_table")
+@login_required
 def admin_table():
     # Get all records from the admin table
     admins = Admin.query.all()
@@ -380,6 +360,7 @@ def admin_table():
     return render_template("Admin/admin_table.html", admins=admins)
 
 @app.route("/manageUsers")
+@login_required
 def manage_users():
     # Get all users from the database
     users = User.query.all()
@@ -405,7 +386,8 @@ def get_player_stats(player_id):
         return response.json()  
     else:
         return None 
-    
+
+# Route to display player profile
 @app.route("/player/<int:player_id>")
 def player_profile(player_id):
     player_data = get_player_stats(player_id)

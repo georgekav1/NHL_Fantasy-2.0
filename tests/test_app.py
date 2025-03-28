@@ -1,4 +1,5 @@
 import pytest
+import os
 from app import app, db, User  # Import your Flask app, database, and models
 from flask import Flask, url_for, json
 from werkzeug.security import generate_password_hash
@@ -6,7 +7,7 @@ from werkzeug.security import generate_password_hash
 @pytest.fixture
 def client():
     app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # Use in-memory DB for testing
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), '../instance/users.db')}"
     client = app.test_client()
     
     # Create tables

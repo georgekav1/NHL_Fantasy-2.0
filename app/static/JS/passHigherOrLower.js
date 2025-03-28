@@ -31,48 +31,50 @@ function hideHigherOrLowerBox() {
     rightColumn.style.width = '50%'; // Reset the right column width to 50%
 }
 
-function compare_stats(stat, choice) {
-    console.log("compare_stats called", stat, choice);
+function compare_stats(stat,choice){
+    console.log("compare stats called", stat, choice);
 
-    let turn = sessionStorage.getItem("turn"); // Check whose turn it is
-    console.log("Current Turn:", turn);
-
-    let playerStat, opponentStat;
-
-    if (turn === "player1") {
-        playerStat = `player-${stat}`;
-        opponentStat = `opp-${stat}`;
-    } else {
-        playerStat = `opp-${stat}`;
-        opponentStat = `player-${stat}`;
-    }
-
-    if (stat === "height") {
-        let heightText = document.getElementById(playerStat).textContent.trim();
+    if(stat == "height"){
+        let heightText = document.getElementById(`player-${stat}`).textContent.trim();
         let [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        user = feet * 12 + (inches || 0);
-        
-        heightText = document.getElementById(opponentStat).textContent.trim();
-        [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        opp = feet * 12 + (inches || 0);
-    } else {
-        user = parseFloat(document.getElementById(playerStat).textContent.trim());
-        opp = parseFloat(document.getElementById(opponentStat).textContent.trim());
-    }
+        user = feet * 12 + (inches || 0); // Default inches to 0 if not present
+        console.log(user);
 
-    if (isNaN(user) || isNaN(opp)) { 
+        heightText = document.getElementById(`opp-${stat}`).textContent.trim();
+        [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
+        opp = feet * 12 + (inches || 0); // Default inches to 0 if not present
+        console.log(opp);
+    }else{
+        user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
+        console.log(user)
+        opp = parseFloat(document.getElementById(`opp-${stat}`).textContent.trim());
+        console.log(opp)
+    }
+    if(isNaN(user) || isNaN(opp)){ 
         console.error("Invalid stat value");
         return;
     }
-
-    let winner;
-    if (choice === "Higher") {
-        winner = user > opp ? (turn === "player1" ? 0 : 1) : (opp > user ? (turn === "player1" ? 1 : 0) : 3);
-    } else {
-        winner = user < opp ? (turn === "player1" ? 0 : 1) : (opp < user ? (turn === "player1" ? 1 : 0) : 3);
+    if(choice == "Higher"){
+        if(user>opp){
+            window.location.href = "/endOfRound?winner=0";
+        }
+        else if(opp>user){
+            window.location.href  = "/endOfRound?winner=1"
+        }
+        else{
+            window.location.href  = "/endOfRound?winner=3"
+        }
+    }else{
+        if(user<opp){
+            window.location.href  = "/endOfRound?winner=0"
+        }
+        else if(opp<user){
+            window.location.href  = "/endOfRound?winner=1"
+        }
+        else{
+            window.location.href  = "/endOfRound?winner=3"
+        }
     }
-    
-    window.location.href = `/endOfTurn?winner=${winner}`;
 }
 
 // Add event listeners for the "Higher" and "Lower" buttons
