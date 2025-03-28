@@ -89,6 +89,8 @@ function compare_stats(stat,choice){
 }
 
 
+
+
 // Add event listeners for the "Higher" and "Lower" buttons
 document.getElementById('higherChosen').addEventListener('click', () => {
     userChoice = "Higher";
