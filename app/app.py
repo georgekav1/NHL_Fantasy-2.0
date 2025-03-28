@@ -146,6 +146,10 @@ def game_over():
 @app.route("/card")
 def card():
     return render_template("Client/card.html", username=current_user.username)
+
+@app.route("/computersTurn")
+def computers_turn():
+    return render_template("Client/computersTurn.html")
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():

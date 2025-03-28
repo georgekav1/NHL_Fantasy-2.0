@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computers_Turn</title>
+    <link rel="stylesheet" href="../../static/CSS/components/computersTurn.css">
+    <link rel="stylesheet" href="../../static/CSS/components/higher&LowerBox.css">
+    
+    
+
+</head>
+
+<body>
+
+    <div class="row">
+        <div class="column-card-left">
+            <div class="card" id="cardstats">
+                <div class="usersName">
+                    <h4>
+                        <!-- {{ username }} -->
+                        User
+                    </h4>
+                </div>
+
+
+                <img class="formatedCard" alt="Formatted Card" src="../../static/images/FormattedCard.png" height="800"
+                    width="800">
+                <div class="cardContent">
+                    <div class="row">
+                        <div class="column"> <img class="teamLogo" id ="player-teamlogo" alt="Team logo" height="80" width="80"> </div>
+                        <div class="column">
+                            <h2 class="position" id="player-position">C</h2>
+                        </div>
+                    </div>
+
+                    <img class="playerPicture" id="player-headshot" src="../../static/images/temp-player-headshot.png" alt="Player picture" height="300" width="350">
+                    <h2 class="playerName" id="player-name">Name</h2>
+                    <div class="stats">
+                        <div class="row">
+                            <div class="column">
+                               
+                                    <h3 class="height" id="player-height" data-stat="Height">0</h3>
+                                    
+                                
+                                
+                            </div>
+                            <div class="column">
+                                
+                                    <h3 class=" goals" id="player-goals" data-stat="Goals">0</h3>
+                                    
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                               
+                                    <h3 class="weight" id="player-weight" data-stat="Weight">0</h3>
+                                
+                            </div>
+                            <div class="column">
+                                
+                                    <h3 class="gamesPlayed" id="player-gamesPlayed" data-stat="GamesPlayed">0</h3>
+                                    
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="column">
+                                
+                                    <h3 class="assist" id="player-assists" data-stat="Assist">0</h3>
+                                 
+                                
+                                
+                            </div>
+                            <div class="column">
+                                
+                                    <h3 class="shooting" id="player-shootingPctg" data-stat="Shooting">0%</h3>
+                                
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="column-card-middle">
+            <div class = "computer-choice">
+                <h3 id="computerChoice-text">Computer's Choice</h3>
+                <img class="loading" src="../../static/images/loading-bar.gif" alt="loading" height="300" width="300">
+            </div>
+
+            <div class ="displayChoice">
+                <h3 id="displayChoice-text">Computer has chosen {{stat}}, {{compChoice}}</h3>
+            </div>
+            
+        </div>
+        <div class="column-card-right">
+
+            <div class=blankCard>
+                <div class="opponentName">
+                    <h4>
+                        CPU
+                    </h4>
+                </div>
+                <div id="oppCard">
+                <img class="playerCard" src="../../static/images/PlayerCard.png" alt="Player Card" height="800"
+                    width="800">
+                </div>  
+
+                    
+            </div>
+        </div>
+    </div>
+
+   
+
+    
+
+
+</body>
+<script src="../../static/JS/cardStats.js"></script>
+<script src="../../static/JS/computersTurn.js"></script>
+<script src="../../static/JS/cardStats.js"></script>
+
+</html>
