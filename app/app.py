@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-    last_login = db.Column(db.DateTime, default=datetime, onupdate=datetime)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     player_rank = db.Column(db.String(50), nullable=False, default="Bronze")
     total_games_played = db.Column(db.Integer, nullable=False, default=0)
     wins = db.Column(db.Integer, nullable=False, default=0)
@@ -89,6 +89,12 @@ def update_last_login(user):
     user.last_login = datetime.utcnow()
     db.session.commit()
 
+def some():
+    return User
+
+
+
+
 # All Routes
 @app.route("/", methods=['GET', 'POST'])
 def login():
@@ -101,7 +107,8 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             update_last_login(user)
-            return redirect(url_for('home'))  # Go to home page after login
+            print(user.id)
+            return redirect(url_for('home')), username  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
 
