@@ -6,9 +6,6 @@ document.getElementById("firstToX").textContent = `First to: ${targetScore}`;
 let userScore = parseInt(sessionStorage.getItem("userScore")) || 0;
 let computerScore = parseInt(sessionStorage.getItem("computerScore")) || 0;
 
-// Example: Update scores based on the round result (Replace this with actual logic)
-//const roundWinner = sessionStorage.getItem("roundWinner"); // Get winner from sessionStorage
-
 const urlParams = new URLSearchParams(window.location.search);
 const winner = parseInt(urlParams.get("winner"));
 
