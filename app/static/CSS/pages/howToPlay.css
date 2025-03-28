@@ -6,3 +6,19 @@ h1 {
   -webkit-text-stroke-color: black;
     
 }
+
+@media screen and (max-width: 430px), (max-height: 932px) {
+    h1 {
+        font-size: 30px; /* Adjust font size for smaller screens */
+    }
+
+    #backToHome {
+      position: static; /* Remove absolute positioning */
+      width: 200px; /* Set a consistent width for buttons */
+      padding: 10px; /* Add padding for better appearance */
+      text-align: center; /* Center-align text inside buttons */
+      margin: 10px 0; /* Add vertical spacing between buttons */
+      border-radius: 10px; /* Add rounded corners */
+      margin-top: 30%;
+    }
+}
