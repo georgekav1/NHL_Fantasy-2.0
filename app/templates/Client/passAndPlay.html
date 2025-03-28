@@ -3,9 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Vs The Computer</title>
+    <link rel="stylesheet" href="../static/CSS/pages/vsComputer.css">
+    <link rel="stylesheet" href="../static/CSS/components/button.css">
+    <link rel="stylesheet" href="../static/CSS/components/container.css">
+    <link rel="stylesheet" href="../static/CSS/components/basics.css">
 </head>
 <body>
-    <h1>Pass and Play</h1>
+    <div class="container">
+        <h1 id="Title">Pass and Play</h1>
+        <form id="scoreForm">
+            <label id="label" for="score">Set the score you're going to:</label>
+            <div class="input-container">
+                <input type="text" id="score" name="score">
+                <input type="submit" id="setButton" value="Set">
+            </div>
+        </form>
+
+        <a href="{{ url_for('home') }}" class="button-class" id="exit">Exit</a>
+    </div>
 </body>
+<script src="../static/JS/fetch_player_list.js"></script>
+<script src="../static/JS/firstToX.js"></script>
 </html>

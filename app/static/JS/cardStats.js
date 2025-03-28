@@ -95,28 +95,37 @@ async function on_page_load(){
     
         
 };
-async function on_computer_turn(){
-    const oppStats = await fetchStats(randomPlayer());
-    flipcard();
-    populateCard("opp", oppStats);
+
+function compare_stats(stat){
+    document.getElementById('player-{stat}')
+}
+
+async function on_computer_turn() {
+    // Add a delay before showing the computer's card stats
+    setTimeout(async () => {
+        const oppStats = await fetchStats(randomPlayer());
+        flipcard();
+        populateCard("opp", oppStats);
+    }, 3000); // 3-second delay to allow the higher or lower box to disappear
+
 }
 
 function flipcard(){
     console.log("flipping card");
     document.getElementById("oppCard").innerHTML = `
-    <img class="formatedCard" alt="Formatted Card" src="../../static/images/FormattedCard.png" height="800" width="800">
-    <div class="cardContent">
+    <img class="formattedCard" alt="Formatted Card" src="../../static/images/FormattedCard.png" height="800" width="800">
+    <div class="cardContent2">
         <div class="row">
             <div class="column">
-                <img class="teamLogo" id="opp-teamlogo" alt="Team logo" height="50" width="50" />
+                <img class="teamLogo2" id="opp-teamlogo" alt="Team logo" height="80" width="80" />
             </div>
             <div class="column">
-                <h2 class="position" id="opp-position">C</h2>
+                <h2 class="position2" id="opp-position">C</h2>
             </div>
         </div>
-        <img class="playerPicture" id="opp-headshot" src="../../static/images/temp-player-headshot.png" alt="Player picture" height="300" width="350" />
-        <h2 class="playerName" id="opp-name">Name</h2>
-        <div class="stats">
+        <img class="playerPicture2" id="opp-headshot" src="../../static/images/temp-player-headshot.png" alt="Player picture" height="300" width="350" />
+        <h2 class="playerName2" id="opp-name">Name</h2>
+        <div class="stats2">
             <div class="row">
                 <div class="column">
                     <div class="tooltip">
@@ -128,7 +137,7 @@ function flipcard(){
                 </div>
                 <div class="column">
                     <div class="tooltip2">
-                        <h3 class="higherOrLower goals" id="opp-goals" data-stat="Goals">0</h3>
+                        <h3 class="higherOrLower goals2" id="opp-goals" data-stat="Goals">0</h3>
                         <span class="tooltiptext2">
                             <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
                         </span>
@@ -146,7 +155,7 @@ function flipcard(){
                 </div>
                 <div class="column">
                     <div class="tooltip2">
-                        <h3 class="higherOrLower gamesPlayed" id="opp-gamesPlayed" data-stat="GamesPlayed">0</h3>
+                        <h3 class="higherOrLower gamesPlayed2" id="opp-gamesPlayed" data-stat="GamesPlayed">0</h3>
                         <span class="tooltiptext2">
                             <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
                         </span>
@@ -164,7 +173,7 @@ function flipcard(){
                 </div>
                 <div class="column">
                     <div class="tooltip2">
-                        <h3 class="higherOrLower shooting" id="opp-shootingPctg" data-stat="Shooting">0%</h3>
+                        <h3 class="higherOrLower shooting2" id="opp-shootingPctg" data-stat="Shooting">0%</h3>
                         <span class="tooltiptext2">
                             <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
                         </span>
