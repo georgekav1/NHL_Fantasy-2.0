@@ -105,9 +105,9 @@ async function on_computer_turn() {
     setTimeout(async () => {
         const oppStats = await fetchStats(randomPlayer());
         flipcard();
-        populateCard("opp", oppStats);
-    }, 3000); // 3-second delay to allow the higher or lower box to disappear
-
+        await populateCard("opp", oppStats);
+        console.log("card populated");
+    }, 1000); // 3-second delay to allow the higher or lower box to disappear
 }
 
 function flipcard(){

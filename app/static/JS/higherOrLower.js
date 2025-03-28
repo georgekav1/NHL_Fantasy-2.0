@@ -48,22 +48,27 @@ function hideHigherOrLowerBox() {
 }
 
 function compare_stats(stat,choice){
+    console.log("compare stats called", stat, choice);
 
     if(stat == "height"){
         let heightText = document.getElementById(`player-${stat}`).textContent.trim();
         let [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        user = feet * 12 + inches;
-        console.log(user)
+        user = feet * 12 + (inches || 0); // Default inches to 0 if not present
+        console.log(user);
 
         heightText = document.getElementById(`opp-${stat}`).textContent.trim();
         [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
-        opp = feet * 12 + inches;
-        console.log(opp) 
+        opp = feet * 12 + (inches || 0); // Default inches to 0 if not present
+        console.log(opp);
     }else{
         user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
         console.log(user)
         opp = parseFloat(document.getElementById(`opp-${stat}`).textContent.trim());
         console.log(opp)
+    }
+    if(isNaN(user) || isNaN(opp)){ 
+        console.error("Invalid stat value");
+        return;
     }
     if(choice == "Higher"){
         if(user>opp){
@@ -105,6 +110,7 @@ document.getElementById('higherChosen').addEventListener('click', () => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
     }, 10000);
 
+    sessionStorage.setItem("lastTurn", "user");
     
     setTimeout(() => {
         compare_stats(statId,userChoice);
@@ -123,7 +129,7 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
     setTimeout(() => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
     }, 10000);
-
+    sessionStorage.setItem("lastTurn", "user");
     
     setTimeout(() => {
         compare_stats(statId,userChoice);

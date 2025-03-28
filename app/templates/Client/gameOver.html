@@ -35,7 +35,7 @@
             Redirecting back to home...
         </div>
     </div>
-    <script method="post">
+    <script>
     document.addEventListener("DOMContentLoaded", () => {
         // Retrieve sessionStorage values
         let targetScore = parseInt(sessionStorage.getItem("targetScore")) || 10;
@@ -52,9 +52,9 @@
 
         // Display the winner message
         const resultMessage = document.getElementById("resultMessage");
-        if (roundWinner === "user") {
+        if (userScore === targetScore) {
             resultMessage.textContent = "Congratulations! You won the game!";
-        } else if (roundWinner === "computer") {
+        } else if (computerScore === targetScore) {
             resultMessage.textContent = "The computer won the game. Better luck next time!";
         } else {
             resultMessage.textContent = "It's a tie!";

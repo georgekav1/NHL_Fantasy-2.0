@@ -136,7 +136,7 @@ def how_to_play():
     return render_template("Client/howToPlay.html")
 
 @app.route("/VsComputer")
-@login_required
+#@login_required
 def vs_computer():
     return render_template("Client/VsComputer.html")
 
@@ -146,27 +146,27 @@ def pass_and_play():
     return render_template("Client/passAndPlay.html")
 
 @app.route("/pickUpCard")
-@login_required
+#@login_required
 def pick_up_card():
     return render_template("Client/pickUpCard.html")
 
 @app.route("/endOfRound")
-@login_required
+#@login_required
 def end_of_round():
     return render_template("Client/endOfRound.html")
 
 @app.route("/gameOver")
-@login_required
+#@login_required
 def game_over():
     return render_template("Client/gameOver.html")
 
 @app.route("/card")
-@login_required
+#@login_required
 def card():
-    return render_template("Client/card.html", username=current_user.username)
+    return render_template("Client/card.html")#, username=current_user.username)
 
 @app.route("/computersTurn")
-@login_required
+#@login_required
 def computers_turn():
     return render_template("Client/computersTurn.html")
         

@@ -30,16 +30,17 @@ function choiceSelector(){
     }else{
         userChoice = "Lower";
     }
-    console.log("Computer chose:", selectedStat, userChoice);
-    document.getElementById("display-choice-text").textContent = `The computer selected ${selectedStat} and chose ${userChoice}.`;
+    console.log("Computer chose:", statId, userChoice);
+    document.getElementById("displayChoice-text").textContent = `The computer selected ${statId} and chose ${userChoice}.`;
     return [statId, userChoice];
 }
 
-function turn(stat, choice){
-    compare_stats(stat, choice);
+function turn(stat){
+    console.log("called turn");
+    console.log(stat);
+    setTimeout(() =>{
+        compare_stats(stat[0], stat[1]);
+    } ,5000 );
+    console.log("compared stats SHOULDNT GET HERE");
 }
 
-setTimeout(() => {
-    turn(choiceSelector());
-}
-, 10000);

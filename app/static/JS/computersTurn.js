@@ -20,18 +20,26 @@ function hideLoadingGif() {
     const displayChoiceBox = document.querySelector('.displayChoice');
 
     loadingGif.style.display = 'none'; // Hide the loading GIF
+
+    on_computer_turn(); // Show the stats immediately after the GIF disappears
+
     setTimeout(() => {
         displayChoiceBox.style.display = 'block'; // Show the displayChoice box
     }, 3000); // 2-second delay
-
-    // // Show the stats immediately after the GIF disappears
-    on_computer_turn();
 }
 
 // Call the functions to show and hide the loading GIF with a delay
 showLoadingGif();
 
-setTimeout(() => {
-    hideLoadingGif();
+setTimeout(async() => {
+    await hideLoadingGif();
+    sessionStorage.setItem("lastTurn", "computer");
+    console.log("about to run turn");
+    setTimeout(() =>{
+        turn(choiceSelector());
+    }
+    , 5000);
+    console.log("ran turn");
+
 }, 5000); // 5-second delay to simulate the computer's turn
 

@@ -10,6 +10,9 @@ document.getElementById("scoreForm").addEventListener("submit", function(event) 
 
     // Store score in sessionStorage for access in endOfRound.html
     sessionStorage.setItem("targetScore", scoreValue);
+    sessionStorage.setItem("lastTurn", "");
+    sessionStorage.setItem("userScore", 0);
+    sessionStorage.setItem("computerScore", 0);
 
     // Send score to /pickUpCard
     fetch("/pickUpCard", {
