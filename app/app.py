@@ -1,12 +1,14 @@
 from flask import Flask, render_template, redirect, url_for, request, flash,abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
+from flasgger import Swagger
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import datetime
 import api
 
 app = Flask(__name__)
+swagger = Swagger(app)
 
 # App Configuration
 app.config['SECRET_KEY'] = 'your_secret_key'  # You should change this to a secret key
@@ -55,17 +57,6 @@ class User(UserMixin, db.Model):
             self.player_rank = "Bronze"
         
         db.session.commit()
-
-    def update_null_last_login():
-        with app.app_context():
-            db.session.execute(
-            "UPDATE user SET last_login = CURRENT_TIMESTAMP WHERE last_login IS NULL"
-        )
-        db.session.execute(
-            "UPDATE admin SET last_login = CURRENT_TIMESTAMP WHERE last_login IS NULL"
-        )
-        db.session.commit()
-
 
 # Admin table for the database
 class Admin(UserMixin, db.Model):
@@ -155,6 +146,30 @@ def card():
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():
+    """
+    Register a new user.
+    ---
+    tags:
+      - User Registration
+    parameters:
+      - name: username
+        in: formData
+        type: string
+        required: true
+      - name: password
+        in: formData
+        type: string
+        required: true
+      - name: email
+        in: formData
+        type: string
+        required: true
+    responses:
+      200:
+        description: Registration successful
+      400:
+        description: Invalid input
+    """
     if request.method == 'POST':    
         username = request.form['username']
         password = request.form['password']
@@ -186,6 +201,15 @@ def register():
 @app.route("/logout")
 @login_required
 def logout():
+    """
+    Log out the current user.
+    ---
+    tags:
+      - Logout
+    responses:
+      200:
+        description: Successfully logged out
+    """
     # Check if the current user is an admin
     if isinstance(current_user, Admin):  
         logout_user()  
@@ -199,6 +223,20 @@ def logout():
 
 @app.route("/proxy/<path:url>")
 def proxy(url):
+    """
+    Proxy API request to another server.
+    ---
+    tags:
+      - Proxy
+    parameters:
+      - name: url
+        in: path
+        type: string
+        required: true
+    responses:
+      200:
+        description: API response
+    """
     query_string = request.query_string.decode()
     print(query_string)
     full_url = f"{url}?{query_string}"
@@ -212,6 +250,26 @@ def update_last_login(admin_user):
 
 @app.route("/adminLogin", methods=['GET', 'POST'])
 def admin_login():
+    """
+    Admin Login
+    ---
+    tags:
+      - Admin Login
+    parameters:
+      - name: username
+        in: formData
+        type: string
+        required: true
+      - name: password
+        in: formData
+        type: string
+        required: true
+    responses:
+      200:
+        description: Admin logged in
+      400:
+        description: Invalid credentials
+    """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
