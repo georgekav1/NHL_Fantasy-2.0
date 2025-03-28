@@ -53,3 +53,41 @@
 #setButton:hover {
     transform: scale(1.2);
 }
+
+@media screen and (max-width: 430px), (max-height: 932px) {
+    #Title {
+        font-size: 30px; /* Adjust font size for smaller screens */
+    }
+
+    .form {
+        font-size: 20px; /* Adjust font size for smaller screens */
+        margin-top: 20px; /* Adjust spacing for smaller screens */
+    }
+
+    #label, #label2 {
+        font-size: 20px; /* Adjust font size for smaller screens */
+    }
+
+    #score, #name {
+        font-size: 15px; /* Adjust font size for smaller screens */
+        width: 80%; /* Adjust width for smaller screens */
+    }
+
+    #setButton {
+        font-size: 20px; /* Adjust font size for smaller screens */
+        width: 100%; /* Adjust width for smaller screens */
+        padding: 10px; /* Adjust padding for smaller screens */
+        margin-left: 0; /* Center the button on smaller screens */
+        margin-top: 20px; /* Add spacing above the button */
+    }
+    #exit {
+        position: static; /* Remove absolute positioning */
+        width: 200px; /* Set a consistent width for buttons */
+        padding: 10px; /* Add padding for better appearance */
+        text-align: center; /* Center-align text inside buttons */
+        margin: 10px 0; /* Add vertical spacing between buttons */
+        border-radius: 10px; /* Add rounded corners */
+        margin-top: 30%;
+    }
+    
+}

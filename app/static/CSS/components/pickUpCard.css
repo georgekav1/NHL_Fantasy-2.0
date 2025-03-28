@@ -50,3 +50,19 @@ body {
   background-size: cover;
   height: 100vh;
 }
+
+@media screen and (max-width: 430px), (max-height: 932px) {
+  .pickUpButton {
+    font-size: 30px;
+    /* Adjust font size for smaller screens */
+    width: 65%;
+    /* Adjust width for smaller screens */
+    left: 15%;
+  }
+
+  .playerCard {
+    width: 100%; /* Stretch the card to cover more of the screen width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the card horizontally */
+  }
+}

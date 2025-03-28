@@ -20,7 +20,7 @@ h3 {
     border-radius: 5px;
     z-index: 0;
     /* Ensure the image is below the button */
-    
+
 }
 
 .formattedCard2 {
@@ -28,17 +28,17 @@ h3 {
     border-radius: 5px;
     z-index: 0;
     /* Ensure the image is below the button */
-    
-    
+
+
 }
 
 .cardContent {
     position: absolute;
     z-index: 1;
-    top : 0%;
+    top: 0%;
 }
 
-.cardContent2{
+.cardContent2 {
     position: absolute;
     z-index: 1;
     top: 0%;
@@ -112,15 +112,20 @@ h3 {
 .column-card-left,
 .column-card-right {
     float: left;
-    width: 50%; /* Default width is 50% */
-    transition: width 0.3s ease; /* Smooth transition for width changes */
+    width: 50%;
+    /* Default width is 50% */
+    transition: width 0.3s ease;
+    /* Smooth transition for width changes */
 }
 
 .column-card-middle {
     float: left;
-    width: 0; /* Default width is 0 */
-    transition: width 0.3s ease; /* Smooth transition for width changes */
-    overflow: hidden; /* Prevent content overflow when the width is 0 */
+    width: 0;
+    /* Default width is 0 */
+    transition: width 0.3s ease;
+    /* Smooth transition for width changes */
+    overflow: hidden;
+    /* Prevent content overflow when the width is 0 */
 }
 
 
@@ -128,14 +133,14 @@ h3 {
     padding-top: -0%;
     margin-top: -3%;
     padding-left: 25%;
-   
+
 }
 
 .stats2 {
     padding-top: -0%;
     margin-top: -3%;
     padding-left: 45%;
-   
+
 }
 
 .weight2 {
@@ -149,24 +154,24 @@ h3 {
 }
 
 .goals,
-.gamesPlayed{
+.gamesPlayed {
     padding-top: 0px;
     padding-left: 240%;
 }
 
-.shooting{
+.shooting {
     padding-top: 0px;
     padding-left: 180%;
 }
 
 .goals2,
-.gamesPlayed2{
+.gamesPlayed2 {
     padding-top: 0px;
     padding-left: 130%;
-    
+
 }
 
-.shooting2{
+.shooting2 {
     padding-top: 0px;
     padding-left: 130%;
 }
@@ -200,6 +205,7 @@ h3 {
     font-size: auto;
 }
 
+/* Ensure the background fills the entire page */
 body {
     background-image: url("../../images/vsBackround-resized-again.jpeg");
     background-repeat: no-repeat;
@@ -274,9 +280,12 @@ body {
 /* Styling for the scoreboard container */
 .scoreboard {
     display: flex;
-    justify-content: center;   /* Centers the content horizontally */
-    align-items: center;       /* Centers vertically */
-    font-size: 1.75em;            /* Large font size */
+    justify-content: center;
+    /* Centers the content horizontally */
+    align-items: center;
+    /* Centers vertically */
+    font-size: 1.75em;
+    /* Large font size */
     font-weight: bold;
     margin-top: 20px;
 }
@@ -284,20 +293,28 @@ body {
 /* Styling for each score item (User/Computer labels and scores) */
 .score-item {
     text-align: center;
-    margin: 0 135px;           /* Space between user and computer sections */
+    margin: 0 135px;
+    /* Space between user and computer sections */
 }
 
 /* Styling for the label (User/Computer) */
-#userLabel, #computerLabel {
-    display: block;           /* Makes the label appear above the score */
-    font-size: 1em;           /* Smaller font size for the label */
-    font-weight: normal;      /* Regular weight for the label */
-    margin-bottom: 10px;      /* Space between the label and the score */
+#userLabel,
+#computerLabel {
+    display: block;
+    /* Makes the label appear above the score */
+    font-size: 1em;
+    /* Smaller font size for the label */
+    font-weight: normal;
+    /* Regular weight for the label */
+    margin-bottom: 10px;
+    /* Space between the label and the score */
 }
 
 /* Styling for the scores */
-#userScore, #computerScore {
-    font-size: 2.75em;           /* Large font size for the score */
+#userScore,
+#computerScore {
+    font-size: 2.75em;
+    /* Large font size for the score */
     font-weight: bold;
 }
 
@@ -310,9 +327,82 @@ body {
 }
 
 #firstToX {
-    font-size: 1.5em;           /* Large font size for the score */
+    font-size: 1.5em;
+    /* Large font size for the score */
     font-weight: bold;
     margin-top: 10px;
 }
 
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 430px),
+(max-height: 932px) {
 
+    .column-card-left,
+    .column-card-right,
+    .column-card-middle {
+        width: 100%;
+        /* Full width for stacked layout */
+        float: none;
+        /* Remove float to stack vertically */
+    }
+
+    .higherOrLowerBox {
+        display: block;
+        /* Ensure the box is visible */
+        position: relative;
+        /* Position it in the flow of the document */
+        margin: 20px auto;
+        /* Add spacing and center it */
+        width: 90%;
+        /* Adjust width for smaller screens */
+        background: rgba(88, 88, 88, 0.7);
+        /* Semi-transparent background */
+        border: 2px dotted rgb(0, 0, 0);
+        /* Add a border */
+        color: white;
+        /* Text color */
+        padding: 10px;
+        /* Add padding for better appearance */
+        text-align: center;
+        /* Center-align text */
+        border-radius: 10px;
+        /* Rounded corners */
+        z-index: 10;
+        /* Ensure it appears above other elements */
+    }
+
+    
+    .higherOrLowerBox {
+        margin-bottom: 30px;
+        /* Add spacing below the "Higher or Lower" box */
+    }
+
+
+    .cardContent {
+        /* position: absolute; */
+        z-index: 2;
+        /* Ensure stats appear above the card */
+        top: 0%;
+        /* Adjust position to appear on top of the card */
+        left: 5%;
+        /* Add padding from the left */
+        width: 90%;
+        /* Ensure the stats fit within the card */
+        text-align: center;
+        /* Center-align the stats */
+    }
+
+    .formattedCard {
+        position: relative;
+        z-index: 1;
+        /* Ensure the card is below the stats */
+        width: 100%;
+        height: auto;
+        /* Adjust card height for smaller screens */
+        /* Adjust card width for smaller screens */
+        margin: 0 auto;
+        /* Center the card horizontally */
+    }
+
+    
+}

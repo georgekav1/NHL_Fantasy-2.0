@@ -28,3 +28,30 @@
 .lower{
    
 }
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 430px), (max-height: 932px) {
+    .higherOrLowerBox {
+        margin-top: 20px; /* Adjust spacing for smaller screens */
+        padding: 20px; /* Add more padding for better appearance */
+    }
+
+    .row {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        gap: 10px; /* Add spacing between items */
+    }
+
+    .column2 {
+        float: none; /* Remove float for stacked layout */
+        width: 100%; /* Full width for each item */
+        text-align: center; /* Center-align the content */
+    }
+
+    .higher,
+    .lower {
+        width: 50px; /* Adjust button size for smaller screens */
+        height: 50px; /* Maintain aspect ratio */
+    }
+}
