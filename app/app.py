@@ -315,10 +315,6 @@ def admin_table():
     # Get all records from the admin table
     admins = Admin.query.all()
 
-    # Print each admin's username
-    for admin in admins:
-        print(f"Admin Username: {admin.username}")
-
     # Pass the data to a template for displaying
     return render_template("Admin/admin_table.html", admins=admins)
 
