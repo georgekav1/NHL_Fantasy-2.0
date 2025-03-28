@@ -1,6 +1,6 @@
-# NHL Fantasy
+# Hockey Heroes
 
-Welcome to NHL Fantasy! This project is a Top Trumps-style game that allows users to create and manage their fantasy NHL teams, track player statistics, and make decisions based on real-time data analysis of NHL players' stats.
+Welcome to Hockey Heroes! This project is a Top Trumps-style game that allows users to create and manage their fantasy NHL teams, track player statistics, and make decisions based on real-time data analysis of NHL players' stats.
 
 ---
 
