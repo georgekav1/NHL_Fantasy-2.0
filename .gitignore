@@ -1,4 +1,4 @@
 *.pyc
 *.db
 instance/*.db
-app/instance/*db
+app/instance/*.db
