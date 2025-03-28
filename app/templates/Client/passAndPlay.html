@@ -23,13 +23,19 @@
                 <label id="label2" for="name">What is player 2's name:</label>
                 <br>
                 <input type="text" id="name" name="name">
-                <input type="submit" id="setButton" value="Set">
+                <input onclick="startPassAndPlay()" type="submit" id="setButton" value="Set">
             </div>
         </form>
 
         <a href="{{ url_for('home') }}" class="button-class" id="exit">Exit</a>
     </div>
 </body>
+<script>
+    function startPassAndPlay() {
+        sessionStorage.setItem("gameMode", "passAndPlay");
+        window.location.href = "/pickUpCard"; // Redirect to the "Pick Up Card" page
+    }
+</script>
 <script src="../static/JS/fetch_player_list.js"></script>
 <script src="../static/JS/firstToX.js"></script>
 <script src="../../static/JS/higherOrLower.js"></script>

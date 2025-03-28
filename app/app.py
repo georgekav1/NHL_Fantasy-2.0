@@ -169,6 +169,16 @@ def card():
 @login_required
 def computers_turn():
     return render_template("Client/computersTurn.html", username=current_user.username)
+
+@app.route("/player1Turn")
+@login_required
+def player1_turn():
+    return render_template("Client/player1Turn.html", username=current_user.username)
+
+@app.route("/player2Turn")
+@login_required
+def player2_turn():
+    return render_template("Client/player2Turn.html", username=current_user.username)
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():
