@@ -66,7 +66,7 @@ function compare_stats(stat,choice){
         opp = parseFloat(document.getElementById(`opp-${stat}`).textContent.trim());
         console.log(opp)
     }
-    if(!user || !opp){ 
+    if(isNaN(user) || isNaN(opp)){ 
         console.error("Invalid stat value");
         return;
     }
