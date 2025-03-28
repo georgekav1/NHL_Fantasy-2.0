@@ -107,8 +107,8 @@ def login():
         if user and check_password_hash(user.password, password):
             login_user(user)
             update_last_login(user)
-            print(user.id)
-            return redirect(url_for('home')), username  # Go to home page after login
+            print(username)
+            return redirect(url_for('home'))  # Go to home page after login
 
         flash('Invalid username or password', 'danger')
 
