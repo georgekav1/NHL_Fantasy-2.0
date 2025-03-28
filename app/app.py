@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialise SQLAlchemy and login manager
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'user_login'  
+login_manager.login_view = 'login'  
 
 # User table for the database
 class User(UserMixin, db.Model):
@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-    last_login = db.Column(db.DateTime, default=datetime, onupdate=datetime)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     player_rank = db.Column(db.String(50), nullable=False, default="Bronze")
     total_games_played = db.Column(db.Integer, nullable=False, default=0)
     wins = db.Column(db.Integer, nullable=False, default=0)
@@ -146,6 +146,10 @@ def game_over():
 @app.route("/card")
 def card():
     return render_template("Client/card.html", username=current_user.username)
+
+@app.route("/computersTurn")
+def computers_turn():
+    return render_template("Client/computersTurn.html")
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():

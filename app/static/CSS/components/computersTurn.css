@@ -46,13 +46,13 @@ h3 {
 }
 
 .position {
-    padding-top: 70%;
+    padding-top: 75%;
     padding-bottom: 0px;
     padding-left: 35%;
 }
 
 .teamLogo {
-    padding-top: 70%;
+    padding-top: 75%;
     padding-bottom: 0px;
     padding-left: 50%;
     border-radius: 50%;
@@ -74,7 +74,7 @@ h3 {
 .playerName {
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 25%;
+    padding-left: 20%;
     position: center;
 
 }
@@ -82,7 +82,7 @@ h3 {
 .playerName2 {
     padding-top: 0px;
     padding-bottom: 0px;
-    padding-left: 45%;
+    padding-left: 35%;
     position: center;
 }
 
@@ -119,8 +119,51 @@ h3 {
 .column-card-middle {
     float: left;
     width: 0; /* Default width is 0 */
-    transition: width 0.3s ease; /* Smooth transition for width changes */
+    transition: width 0.3s ease, margin 0.3s ease; /* Smooth transition for width and margin changes */
     overflow: hidden; /* Prevent content overflow when the width is 0 */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+}
+
+.displayChoice {
+    display: none; /* Hidden by default */
+    background: rgba(88, 88, 88, 0.7);
+    border: 2px dotted rgb(0, 0, 0);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Ensure it fits within the middle column */
+    height: auto;
+    margin-top:100%;
+    font-size: 20px;
+
+}
+
+.computer-choice {
+    display: none; /* Hide the loading GIF by default */
+    text-align: center;
+    margin-top: 80%;
+}
+
+.loading {
+    display: block; /* Show the loading GIF when the computer is choosing */
+    width: 100%; /* Adjust the size of the GIF */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 70%; /* Center the GIF vertically */
+    margin-right: 10%; /* Center the GIF horizontally */
+    padding-top: 5%;
+    
+
+}
+ #computerChoice-text {
+    padding-top: 10%;
+    text-align: center;
+padding-bottom: 0%;
+font-size: 30px;
+margin-top: 20%;
+margin-bottom: 0%;
 }
 
 
@@ -138,37 +181,27 @@ h3 {
    
 }
 
-.weight2 {
-    padding-top: 0px;
-    padding-left: 20%;
-}
-
-.assist2 {
-    padding-top: 0px;
-    padding-left: 20%;
-}
-
 .goals,
 .gamesPlayed{
     padding-top: 0px;
-    padding-left: 240%;
+    padding-left: 60%;
 }
 
 .shooting{
     padding-top: 0px;
-    padding-left: 180%;
+    padding-left: 60%;
 }
 
 .goals2,
 .gamesPlayed2{
     padding-top: 0px;
-    padding-left: 130%;
+    padding-left: 100%;
     
 }
 
 .shooting2{
     padding-top: 0px;
-    padding-left: 130%;
+    padding-left: 100%;
 }
 
 .blankCard {
@@ -180,6 +213,7 @@ h3 {
     height: 100vh;
     /* Make sure the container takes the full height of the viewport */
     margin-top: 15%;
+    overflow: visible;
 }
 
 .usersName {
@@ -207,112 +241,4 @@ body {
     background-size: cover;
     height: 100vh;
 }
-
-/*left side of the card*/
-.tooltip {
-    position: relative;
-    display: inline-block;
-
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    position: absolute;
-    top: 50%;
-    /* Center the tooltip vertically */
-    left: -100%;
-    /* Position the tooltip to the left of the tooltip container */
-    transform: translate(-280%, -50%);
-    /* Add spacing and center vertically */
-    z-index: 1;
-
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-}
-
-
-/*right side of the card*/
-.tooltip2 {
-    position: relative;
-    display: inline-block;
-
-}
-
-.tooltip2 .tooltiptext2 {
-    visibility: hidden;
-    position: absolute;
-    top: 50%;
-    /* Center the tooltip vertically */
-    left: 100%;
-    /* Position the tooltip to the left of the tooltip container */
-    transform: translate(260%, -50%);
-    /* Add spacing and center vertically */
-    z-index: 1;
-
-}
-
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip2:hover .tooltiptext2 {
-    visibility: visible;
-}
-
-/* End of round */
-.result-message {
-    font-size: 3rem;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: black;
-}
-
-.redirect-message {
-    font-size: 1.5rem;
-    color: #ffffff;
-}
-
-/* Styling for the scoreboard container */
-.scoreboard {
-    display: flex;
-    justify-content: center;   /* Centers the content horizontally */
-    align-items: center;       /* Centers vertically */
-    font-size: 1.75em;            /* Large font size */
-    font-weight: bold;
-    margin-top: 20px;
-}
-
-/* Styling for each score item (User/Computer labels and scores) */
-.score-item {
-    text-align: center;
-    margin: 0 135px;           /* Space between user and computer sections */
-}
-
-/* Styling for the label (User/Computer) */
-#userLabel, #computerLabel {
-    display: block;           /* Makes the label appear above the score */
-    font-size: 1em;           /* Smaller font size for the label */
-    font-weight: normal;      /* Regular weight for the label */
-    margin-bottom: 10px;      /* Space between the label and the score */
-}
-
-/* Styling for the scores */
-#userScore, #computerScore {
-    font-size: 2.75em;           /* Large font size for the score */
-    font-weight: bold;
-}
-
-#userScore {
-    color: chartreuse;
-}
-
-#computerScore {
-    color: crimson;
-}
-
-#firstToX {
-    font-size: 1.5em;           /* Large font size for the score */
-    font-weight: bold;
-    margin-top: 10px;
-}
-
 

@@ -95,6 +95,11 @@ async function on_page_load(){
     
         
 };
+
+function compare_stats(stat){
+    document.getElementById('player-{stat}')
+}
+
 async function on_computer_turn() {
     // Add a delay before showing the computer's card stats
     setTimeout(async () => {
@@ -102,6 +107,7 @@ async function on_computer_turn() {
         flipcard();
         populateCard("opp", oppStats);
     }, 3000); // 3-second delay to allow the higher or lower box to disappear
+
 }
 
 function flipcard(){
@@ -121,57 +127,41 @@ function flipcard(){
         <h2 class="playerName2" id="opp-name">Name</h2>
         <div class="stats2">
             <div class="row">
-                <div class="column">
-                    <div class="tooltip">
-                        <h3 class="higherOrLower height" id="opp-height" data-stat="Height">0</h3>
-                        <span class="tooltiptext">
-                            <img class="leftArrow" src="../../static/images/left-arrow-outlined.png" alt="left-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                <div class="column"> 
+                        <h3 class="height2" id="opp-height" data-stat="Height">0</h3>
+                        
                 </div>
                 <div class="column">
-                    <div class="tooltip2">
-                        <h3 class="higherOrLower goals2" id="opp-goals" data-stat="Goals">0</h3>
-                        <span class="tooltiptext2">
-                            <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                    
+                        <h3 class="goals2" id="opp-goals" data-stat="Goals">0</h3>
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="column">
-                    <div class="tooltip">
-                        <h3 class="higherOrLower weight" id="opp-weight" data-stat="Weight">0</h3>
-                        <span class="tooltiptext">
-                            <img class="leftArrow" src="../../static/images/left-arrow-outlined.png" alt="left-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                    
+                        <h3 class="weight2" id="opp-weight" data-stat="Weight">0</h3>
+                        
+                    
                 </div>
                 <div class="column">
-                    <div class="tooltip2">
-                        <h3 class="higherOrLower gamesPlayed2" id="opp-gamesPlayed" data-stat="GamesPlayed">0</h3>
-                        <span class="tooltiptext2">
-                            <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                    
+                        <h3 class="gamesPlayed2" id="opp-gamesPlayed" data-stat="GamesPlayed">0</h3>
+                        
+                    
                 </div>
             </div>
             <div class="row">
                 <div class="column">
-                    <div class="tooltip">
-                        <h3 class="higherOrLower assist" id="opp-assists" data-stat="Assist">0</h3>
-                        <span class="tooltiptext">
-                            <img class="leftArrow" src="../../static/images/left-arrow-outlined.png" alt="left-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                    
+                        <h3 class="assist2" id="opp-assists" data-stat="Assist">0</h3>
+                        
+                    
                 </div>
                 <div class="column">
-                    <div class="tooltip2">
-                        <h3 class="higherOrLower shooting2" id="opp-shootingPctg" data-stat="Shooting">0%</h3>
-                        <span class="tooltiptext2">
-                            <img class="rightArrow" src="../../static/images/right-arrow-outlined.png" alt="right-arrow" height="70" width="70" />
-                        </span>
-                    </div>
+                    
+                        <h3 class="shooting2" id="opp-shootingPctg" data-stat="Shooting">0%</h3>
+                        
                 </div>
             </div>
         </div>
