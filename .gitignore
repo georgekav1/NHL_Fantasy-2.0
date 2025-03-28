@@ -1,2 +1,4 @@
 *.pyc
 *.db
+instance/*.db
+app/instance/users.db
