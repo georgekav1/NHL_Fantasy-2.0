@@ -17,7 +17,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Initialise SQLAlchemy and login manager
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
-login_manager.login_view = 'user_login'  
+login_manager.login_view = 'login'  
 
 # User table for the database
 class User(UserMixin, db.Model):
@@ -27,7 +27,7 @@ class User(UserMixin, db.Model):
     password = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
-    last_login = db.Column(db.DateTime, default=datetime, onupdate=datetime)
+    last_login = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     player_rank = db.Column(db.String(50), nullable=False, default="Bronze")
     total_games_played = db.Column(db.Integer, nullable=False, default=0)
     wins = db.Column(db.Integer, nullable=False, default=0)
@@ -120,26 +120,32 @@ def home():
     return render_template("Client/home.html", username=current_user.username) 
 
 @app.route("/howToPlay")
+@login_required
 def how_to_play():
     return render_template("Client/howToPlay.html")
 
 @app.route("/VsComputer")
+@login_required
 def vs_computer():
     return render_template("Client/VsComputer.html")
 
 @app.route("/pickUpCard")
+@login_required
 def pick_up_card():
     return render_template("Client/pickUpCard.html")
 
 @app.route("/endOfRound")
+@login_required
 def end_of_round():
     return render_template("Client/endOfRound.html")
 
 @app.route("/gameOver")
+@login_required
 def game_over():
     return render_template("Client/gameOver.html")
 
 @app.route("/card")
+@login_required
 def card():
     return render_template("Client/card.html")
         
