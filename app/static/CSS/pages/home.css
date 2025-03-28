@@ -47,4 +47,29 @@
     left: 45%;
 }
 
+@media screen and (max-width: 430px), (max-height: 932px) {
+    #buttonContainer {
+        display: flex; /* Use flexbox for layout */
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: space-around; /* Add spacing between buttons */
+        height: auto; /* Adjust height dynamically */
+        margin-top: 20px; /* Add spacing above the buttons */
+    }
+
+    #HowToPlayButton,
+    #vsComputerButton,
+    #passAndPlayButton,
+    #logoutButton {
+        position: static; /* Remove absolute positioning */
+        width: 200px; /* Set a consistent width for buttons */
+        padding: 10px; /* Add padding for better appearance */
+        text-align: center; /* Center-align text inside buttons */
+        margin: 10px 0; /* Add vertical spacing between buttons */
+        border-radius: 10px; /* Add rounded corners */
+    }
+}
+    
+
+
 
