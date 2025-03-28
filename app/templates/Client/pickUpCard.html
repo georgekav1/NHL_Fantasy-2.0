@@ -16,5 +16,13 @@
 </body>
 
 
-
+<script>
+    if(sessionStorage.getItem("lastTurn") === "computer") {
+        document.getElementById("pickCard").setAttribute("href", "/card");
+    } else if(sessionStorage.getItem("lastTurn") === "user") {
+        document.getElementById("pickCard").setAttribute("href", "/computersTurn");
+    } else {
+        document.getElementById("pickCard").setAttribute("href", "/card");
+    }
+</script>
 </html>

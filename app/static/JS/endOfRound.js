@@ -30,7 +30,7 @@ document.getElementById("userScore").textContent = `User: ${userScore}`;
 document.getElementById("computerScore").textContent = `CPU: ${computerScore}`;
 
 // Check if the game is over
-if (userScore >= targetScore || computerScore >= targetScore) {
+if (userScore>= targetScore || computerScore >= targetScore) {
 
     // Redirect to gameOver.html
     window.location.href = "/gameOver";
@@ -46,6 +46,10 @@ if (userScore >= targetScore || computerScore >= targetScore) {
     }
 
     setTimeout(() => { 
+        const previousUrl = document.referrer;
+        if (previousUrl.includes("pickUpCard")) {
+            window.location.href = "/card"; 
+        }
         window.location.href = "/pickUpCard"; 
     }, 5000);
 }
