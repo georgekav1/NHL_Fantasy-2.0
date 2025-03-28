@@ -4,6 +4,7 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 from datetime import datetime
+import api
 
 app = Flask(__name__)
 
@@ -284,4 +285,4 @@ def player_profile(player_id):
 
 # Main entry point for running the app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5002)  # Set debug=True for development purposes
