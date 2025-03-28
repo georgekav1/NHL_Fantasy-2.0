@@ -1,11 +1,10 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vs The Computer</title>
+    <title>Pass and Play</title>
     <link rel="stylesheet" href="../static/CSS/pages/vsComputer.css">
     <link rel="stylesheet" href="../static/CSS/components/button.css">
     <link rel="stylesheet" href="../static/CSS/components/container.css">
@@ -23,24 +22,31 @@
                 <label id="label2" for="name">What is player 2's name:</label>
                 <br>
                 <input type="text" id="name" name="name">
-                <input onclick="startPassAndPlay()" type="submit" id="setButton" value="Set">
+                <input type="submit" id="setButton" value="Set">
             </div>
         </form>
 
         <a href="{{ url_for('home') }}" class="button-class" id="exit">Exit</a>
     </div>
 </body>
+
 <script>
-</script>
-<script src="../static/JS/fetch_player_list.js"></script>
-<script src="../static/JS/firstToX.js"></script>
-<script src="../../static/JS/higherOrLower.js"></script>
-<script>
-    function startPassAndPlay() {
-        const player2Name = document.getElementById("player2Name").value;
+    // Attach an event listener to the form to handle submission
+    document.getElementById("scoreForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+        // Get the values of the input fields
+        const player2Name = document.getElementById("name").value;
+        const score = document.getElementById("score").value;
+
+        // Store the game mode, player 2's name, and score in sessionStorage
         sessionStorage.setItem("gameMode", "passAndPlay");
-        sessionStorage.setItem("player2Name", player2Name); // Store Player 2's name
-        window.location.href = "/player1Turn"; // Redirect to Player 1's turn
-    }
+        sessionStorage.setItem("player2Name", player2Name);
+        sessionStorage.setItem("targetScore", score);
+
+        // Redirect to the "Pick Up Card" page
+        window.location.href = "/pickUpCard";
+    });
 </script>
+
 </html>

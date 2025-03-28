@@ -197,6 +197,11 @@ def player2_turn():
 @login_required
 def pass_turn():
     return render_template("Client/pass.html")
+
+@app.route("/endOfTurn")
+@login_required
+def end_of_turn():
+    return render_template("Client/endOfTurn.html")
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():

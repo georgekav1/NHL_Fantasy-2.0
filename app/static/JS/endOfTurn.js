@@ -43,20 +43,15 @@ if (userScore >= targetScore || player2Score >= targetScore) {
     }
 
     setTimeout(() => { 
-        // Redirect to the appropriate turn
-        if (sessionStorage.getItem("gameMode") === "passAndPlay") {
-            // Alternate turns between Player 1 and Player 2
-            const previousTurn = sessionStorage.getItem("previousTurn");
-            if (previousTurn === "player1") {
-                sessionStorage.setItem("previousTurn", "player2");
-                window.location.href = "/player2Turn";
-            } else {
-                sessionStorage.setItem("previousTurn", "player1");
-                window.location.href = "/player1Turn";
-            }
-        } else {
-            // Default behavior for other game modes
-            window.location.href = "/pass";
-        }
-    }, 5000);
+    const previousUrl = document.referrer;
+
+    // Check if the previous URL includes "pickUpCard"
+    if (previousUrl.includes("pickUpCard")) {
+        window.location.href = "/player1Turn"; 
+    } else {
+        // If not, navigate to "pass.html"
+        window.location.href = "/pickUpCard"; 
+    }
+}, 5000);
 }
+
