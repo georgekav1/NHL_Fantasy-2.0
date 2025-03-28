@@ -1,11 +1,10 @@
-
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vs The Computer</title>
+    <title>Pass and Play</title>
     <link rel="stylesheet" href="../static/CSS/pages/vsComputer.css">
     <link rel="stylesheet" href="../static/CSS/components/button.css">
     <link rel="stylesheet" href="../static/CSS/components/container.css">
@@ -20,7 +19,7 @@
             <div class="input-container">
                 <input type="text" id="score" name="score">
                 <br>
-                <label id="label2" for="name">What is player 2's name:</label>
+                <label id="label" for="name">What is Player 2's name?</label>
                 <br>
                 <input type="text" id="name" name="name">
                 <input onclick="startPassAndPlay()" type="submit" id="setButton" value="Set">
@@ -30,17 +29,15 @@
         <a href="{{ url_for('home') }}" class="button-class" id="exit">Exit</a>
     </div>
 </body>
+
 <script>
+    function startPassAndPlay() {
+        const playerName = document.getElementById("name").value; // Get the name from the input field
+        sessionStorage.setItem("player2Name", playerName); // Store the name in sessionStorage
+        sessionStorage.setItem("gameMode", "passAndPlay"); // Set the game mode to "passAndPlay"
+        window.location.href = "/pickUpCard"; // Redirect to the "Pick Up Card" page
+    };
 </script>
 <script src="../static/JS/fetch_player_list.js"></script>
 <script src="../static/JS/firstToX.js"></script>
-<script src="../../static/JS/higherOrLower.js"></script>
-<script>
-    function startPassAndPlay() {
-        const player2Name = document.getElementById("player2Name").value;
-        sessionStorage.setItem("gameMode", "passAndPlay");
-        sessionStorage.setItem("player2Name", player2Name); // Store Player 2's name
-        window.location.href = "/player1Turn"; // Redirect to Player 1's turn
-    }
-</script>
 </html>

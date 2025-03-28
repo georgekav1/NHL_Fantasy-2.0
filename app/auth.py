@@ -16,7 +16,7 @@ def require_api_key(f):
             if not key_entry:
                 return {"error": "Invalid or missing API key."}, 403
 
-            # Optional: Update request_count here for future rate-limiting
+            # If API key is valid, check if it has exceeded the request limit
             key_entry.request_count += 1
             db.session.commit()
 

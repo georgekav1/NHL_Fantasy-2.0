@@ -76,10 +76,6 @@ class NHLapi(Resource):
         # Return the driver list in JSON format
         return jsonify(user_list)
 
-    # def check_ip():
-    #     if request.remote_addr not in ALLOWED_IPS:
-    #         print("not allowed")
-    #         return jsonify({"error": "Unauthorized IP address"}), 403
 
     def post(self):
         data = request.get_json()

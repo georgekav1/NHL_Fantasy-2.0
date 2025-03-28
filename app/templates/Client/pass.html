@@ -15,8 +15,18 @@
     <script>
         // Add a click event listener to the button
         document.getElementById("playButton").addEventListener("click", function () {
-            // Navigate to the "Pick Up Card" page
-            window.location.href = "/pickUpCard";
+            // Get the current turn from sessionStorage
+            let currentTurn = sessionStorage.getItem("turn");
+
+            // Navigate to the correct player's turn page based on the current turn
+            if (currentTurn === "player1") {
+                window.location.href = "/player1Turn"; // Navigate to Player 1's turn
+            } else if (currentTurn === "player2") {
+                window.location.href = "/player2Turn"; // Navigate to Player 2's turn
+            } else {
+                // Default to Player 1's turn if no turn is set (or handle error)
+                window.location.href = "/player1Turn";
+            }
         });
     </script>
 </body>

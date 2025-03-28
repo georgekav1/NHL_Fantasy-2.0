@@ -2,7 +2,7 @@
 let targetScore = parseInt(sessionStorage.getItem("targetScore")) || 10; 
 document.getElementById("firstToX").textContent = `First to: ${targetScore}`;
 
-// Retrieve previous scores or initialize them
+// Retrieve previous scores or initialise them
 let userScore = parseInt(sessionStorage.getItem("userScore")) || 0;
 let computerScore = parseInt(sessionStorage.getItem("computerScore")) || 0;
 
@@ -20,7 +20,6 @@ if (winner === 0) {
 // Store updated scores in sessionStorage
 sessionStorage.setItem("userScore", userScore);
 sessionStorage.setItem("computerScore", computerScore);
-//sessionStorage.setItem("roundWinner", roundWinner);
 
 // Update displayed scores
 document.getElementById("userScore").textContent = `User: ${userScore}`;

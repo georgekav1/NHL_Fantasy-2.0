@@ -6,11 +6,9 @@ h3 {
 .card {
     position: relative;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    /* Make sure the container takes the full height of the viewport */
     margin-top: 15%;
 }
 
@@ -19,7 +17,7 @@ h3 {
     max-width: 100%;
     border-radius: 5px;
     z-index: 0;
-    /* Ensure the image is below the button */
+
 
 }
 
@@ -27,7 +25,7 @@ h3 {
     max-width: 100%;
     border-radius: 5px;
     z-index: 0;
-    /* Ensure the image is below the button */
+
 
 
 }
@@ -113,19 +111,16 @@ h3 {
 .column-card-right {
     float: left;
     width: 50%;
-    /* Default width is 50% */
+
     transition: width 0.3s ease;
-    /* Smooth transition for width changes */
+
 }
 
 .column-card-middle {
     float: left;
     width: 0;
-    /* Default width is 0 */
     transition: width 0.3s ease;
-    /* Smooth transition for width changes */
     overflow: hidden;
-    /* Prevent content overflow when the width is 0 */
 }
 
 
@@ -179,11 +174,9 @@ h3 {
 .blankCard {
     position: relative;
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    /* Make sure the container takes the full height of the viewport */
     margin-top: 15%;
 }
 
@@ -225,11 +218,8 @@ body {
     visibility: hidden;
     position: absolute;
     top: 50%;
-    /* Center the tooltip vertically */
     left: -100%;
-    /* Position the tooltip to the left of the tooltip container */
     transform: translate(-280%, -50%);
-    /* Add spacing and center vertically */
     z-index: 1;
 
 }
@@ -251,11 +241,8 @@ body {
     visibility: hidden;
     position: absolute;
     top: 50%;
-    /* Center the tooltip vertically */
     left: 100%;
-    /* Position the tooltip to the left of the tooltip container */
     transform: translate(260%, -50%);
-    /* Add spacing and center vertically */
     z-index: 1;
 
 }
@@ -281,11 +268,8 @@ body {
 .scoreboard {
     display: flex;
     justify-content: center;
-    /* Centers the content horizontally */
     align-items: center;
-    /* Centers vertically */
     font-size: 1.75em;
-    /* Large font size */
     font-weight: bold;
     margin-top: 20px;
 }
@@ -294,27 +278,23 @@ body {
 .score-item {
     text-align: center;
     margin: 0 135px;
-    /* Space between user and computer sections */
 }
 
 /* Styling for the label (User/Computer) */
 #userLabel,
-#computerLabel {
+#computerLabel,
+#player2Label {
     display: block;
-    /* Makes the label appear above the score */
     font-size: 1em;
-    /* Smaller font size for the label */
     font-weight: normal;
-    /* Regular weight for the label */
     margin-bottom: 10px;
-    /* Space between the label and the score */
 }
 
 /* Styling for the scores */
 #userScore,
-#computerScore {
+#computerScore,
+#player2Score {
     font-size: 2.75em;
-    /* Large font size for the score */
     font-weight: bold;
 }
 
@@ -322,13 +302,12 @@ body {
     color: chartreuse;
 }
 
-#computerScore {
+#computerScore, #player2Score {
     color: crimson;
 }
 
 #firstToX {
     font-size: 1.5em;
-    /* Large font size for the score */
     font-weight: bold;
     margin-top: 10px;
 }
@@ -341,9 +320,7 @@ body {
     .column-card-right,
     .column-card-middle {
         width: 100%;
-        /* Full width for stacked layout */
         float: none;
-        /* Remove float to stack vertically */
     }
 
     .higherOrLowerBox {

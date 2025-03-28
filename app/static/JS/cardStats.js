@@ -1,5 +1,3 @@
-
-
 const proxyUrl = "/proxy/";
 const playerStats = (id) => {
     if (!id) {

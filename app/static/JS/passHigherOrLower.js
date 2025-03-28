@@ -2,24 +2,8 @@ let selectedStat = ""; // Variable to store the selected stat
 let userChoice = ""; // Variable to store the user's choice (Higher or Lower)
 let statId = "";
 
-
-
 // Select all elements with the class "higherOrLower"
 const statElements = document.querySelectorAll('.higherOrLower');
-
-// function penguin_attack() {
-//     setTimeout(() => {
-//         document.getElementById('penguin').src = "../../static/images/loading-bar.gif";
-//         setTimeout(() => {
-//             document.getElementById('penguin').src = ""; // Hide the gif by clearing the src
-
-//             // Hide the higherOrLowerBox when the GIF is hidden
-//             const higherOrLowerBox = document.querySelector('.higherOrLowerBox');
-//             higherOrLowerBox.style.display = 'none';
-//         }, 4000);
-//     }, 500);
-//     on_computer_turn();
-// }
 
 // Function to show the higherOrLowerBox and adjust column widths
 function showHigherOrLowerBox() {
@@ -72,29 +56,26 @@ function compare_stats(stat,choice){
     }
     if(choice == "Higher"){
         if(user>opp){
-            window.location.href = "/endOfTurn?winner=0";
+            window.location.href = "/endOfRound?winner=0";
         }
         else if(opp>user){
-            window.location.href  = "/endOfTurn?winner=1"
+            window.location.href  = "/endOfRound?winner=1"
         }
         else{
-            window.location.href  = "/endOfTurn?winner=3"
+            window.location.href  = "/endOfRound?winner=3"
         }
     }else{
         if(user<opp){
-            window.location.href  = "/endOfTurn?winner=0"
+            window.location.href  = "/endOfRound?winner=0"
         }
         else if(opp<user){
-            window.location.href  = "/endOfTurn?winner=1"
+            window.location.href  = "/endOfRound?winner=1"
         }
         else{
-            window.location.href  = "/endOfTurn?winner=3"
+            window.location.href  = "/endOfRound?winner=3"
         }
     }
 }
-
-
-
 
 // Add event listeners for the "Higher" and "Lower" buttons
 document.getElementById('higherChosen').addEventListener('click', () => {
@@ -135,9 +116,6 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
         compare_stats(statId,userChoice);
     }, 10000);
 });
-
-
-
 
 // Add a click event listener to each stat element
 statElements.forEach(element => {

@@ -7,9 +7,6 @@
     <title>Card</title>
     <link rel="stylesheet" href="../../static/CSS/components/card.css">
     <link rel="stylesheet" href="../../static/CSS/components/higher&LowerBox.css">
-    
-    
-
 </head>
 
 <body>
@@ -17,12 +14,11 @@
     <div class="row">
         <div class="column-card-left">
             <div class="card" id="cardstats">
-                <div class="usersName">
+                <div class="opponentName">
                     <h4>
                         Player 2
                     </h4>
                 </div>
-
 
                 <img class="formatedCard" alt="Formatted Card" src="../../static/images/FormattedCard.png" height="800"
                     width="800">
@@ -109,14 +105,14 @@
                         </button>
                     </div>
                 </div>
-                <p class="userSelection"></p> <!-- This will display the user's choice -->
+                <p class="userSelection"></p> 
                 <img id="penguin">
             </div>
         </div>
+        
         <div class="column-card-right">
-
             <div class=blankCard>
-                <div class="opponentName">
+                <div class="usersName">
                     <h4>
                         {{ username }}
                     </h4>
@@ -125,36 +121,20 @@
                 <img class="playerCard" src="../../static/images/PlayerCard.png" alt="Player Card" height="800"
                     width="800">
                 </div>  
-
-                    
             </div>
         </div>
     </div>
 
-   
-
-    
-
-
 </body>
+<script>sessionStorage.setItem("turn", "player2"); // Player 2's turn starts</script>
 <script src="../../static/JS/cardStats.js"></script>
-<script src="../../static/JS/higherOrLower.js"></script>
+<script src="../../static/JS/passHigherOrLower.js"></script>
 <script src="../../static/JS/cardStats.js"></script>
-<script>document.addEventListener("DOMContentLoaded", () => {
-    const player1Choice = sessionStorage.getItem("player1Choice");
-
-    document.getElementById("higherChosen").addEventListener("click", () => {
-        // Logic for Player 2 choosing "Higher"
-        sessionStorage.setItem("player2Choice", "Higher");
-        window.location.href = "/endOfTurn"; // Redirect to the end of the turn
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const player2Name = sessionStorage.getItem("player2Name") || "Player 2"; // Retrieve the name or use default
+        document.querySelector(".opponentName h4").textContent = player2Name; // Update the opponentName section
     });
-
-    document.getElementById("lowerChosen").addEventListener("click", () => {
-        // Logic for Player 2 choosing "Lower"
-        sessionStorage.setItem("player2Choice", "Lower");
-        window.location.href = "/endOfTurn"; // Redirect to the end of the turn
-    });
-});
 </script>
 
 </html>

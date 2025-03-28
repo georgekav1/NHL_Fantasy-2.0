@@ -31,7 +31,7 @@ cd NHL_Fantasy-2.0
 
 ### 3. Install the required dependencies:
 ```bash
-pip install flask flask_sqlalchemy flask_login flasgger requests
+pip install flask flask_sqlalchemy flask_login flasgger requests flask_restful pytest
 ```
 
 ---

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +7,6 @@
     <title>Card</title>
     <link rel="stylesheet" href="../../static/CSS/components/card.css">
     <link rel="stylesheet" href="../../static/CSS/components/higher&LowerBox.css">
-    
-    
-
 </head>
 
 <body>
@@ -21,7 +17,6 @@
                 <div class="usersName">
                     <h4>
                         {{ username }}
-                        <!-- User -->
                     </h4>
                 </div>
 
@@ -111,17 +106,16 @@
                         </button>
                     </div>
                 </div>
-                <p class="userSelection"></p> <!-- This will display the user's choice -->
+                <p class="userSelection"></p> 
                 <img id="penguin">
             </div>
         </div>
-        <div class="column-card-right">
 
+        <div class="column-card-right">
             <div class=blankCard>
-                <div class="player2Name">
+                <div class="opponentName">
                     <h4>
-                        {{ player2Name }}
-                        <!-- Player 2 Name -->
+                        Player 2
                     </h4>
                 </div>
                 <div id="oppCard">
@@ -133,24 +127,15 @@
     </div>
 
 </body>
+<script>sessionStorage.setItem("turn", "player1"); // Player 1's turn starts</script>
 <script src="../../static/JS/cardStats.js"></script>
 <script src="../../static/JS/passHigherOrLower.js"></script>
 <script src="../../static/JS/cardStats.js"></script>
-<script src>document.addEventListener("DOMContentLoaded", () => {
-    const player2Name = sessionStorage.getItem("player2Name");
-    document.querySelector(".opponentName h4").textContent = player2Name;
-
-    document.getElementById("higherChosen").addEventListener("click", () => {
-        // Logic for Player 1 choosing "Higher"
-        sessionStorage.setItem("player1Choice", "Higher");
-        window.location.href = "/player2Turn"; // Redirect to Player 2's turn
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const player2Name = sessionStorage.getItem("player2Name") || "Player 2"; // Retrieve the name or use default
+        document.querySelector(".opponentName h4").textContent = player2Name; // Update the opponentName section
     });
-
-    document.getElementById("lowerChosen").addEventListener("click", () => {
-        // Logic for Player 1 choosing "Lower"
-        sessionStorage.setItem("player1Choice", "Lower");
-        window.location.href = "/player2Turn"; // Redirect to Player 2's turn
-    });
-});</script>
+</script>
 
 </html>
