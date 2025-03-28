@@ -180,6 +180,11 @@ def player1_turn():
 @login_required
 def player2_turn():
     return render_template("Client/player2Turn.html", username=current_user.username)
+
+@app.route("/pass")
+@login_required
+def pass_turn():
+    return render_template("Client/pass.html")
         
 @app.route("/register", methods=['GET', 'POST'])
 def register():
