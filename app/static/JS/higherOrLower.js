@@ -48,10 +48,23 @@ function hideHigherOrLowerBox() {
 }
 
 function compare_stats(stat,choice){
-    user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
-    console.log(user)
-    opp = document.getElementById(`opp-${stat}`)
-    console.log(opp)
+
+    if(stat == "height"){
+        let heightText = document.getElementById(`player-${stat}`).textContent.trim();
+        let [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
+        user = feet * 12 + inches;
+        console.log(user)
+
+        heightText = document.getElementById(`opp-${stat}`).textContent.trim();
+        [feet, inches] = heightText.split(' ').filter(part => part !== 'ft' && part !== 'in').map(Number);
+        opp = feet * 12 + inches;
+        console.log(opp) 
+    }else{
+        user = parseFloat(document.getElementById(`player-${stat}`).textContent.trim());
+        console.log(user)
+        opp = parseFloat(document.getElementById(`opp-${stat}`).textContent.trim());
+        console.log(opp)
+    }
     if(choice == "Higher"){
         if(user>opp){
             window.location.href = "/endOfRound?winner=0";
@@ -84,12 +97,16 @@ document.getElementById('higherChosen').addEventListener('click', () => {
     const userSelectionText = document.querySelector('.userSelection');
     userSelectionText.textContent = `You selected ${selectedStat} and chose ${userChoice}.`;
 
+    on_computer_turn();
+
     setTimeout(() => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
-    }, 3000);
+    }, 10000);
 
-    on_computer_turn();
-    compare_stats(statId,userChoice);
+    
+    setTimeout(() => {
+        compare_stats(statId,userChoice);
+    }, 10000);
 });
 
 document.getElementById('lowerChosen').addEventListener('click', () => {
@@ -99,12 +116,16 @@ document.getElementById('lowerChosen').addEventListener('click', () => {
     const userSelectionText = document.querySelector('.userSelection');
     userSelectionText.textContent = `You selected ${selectedStat} and chose ${userChoice}.`;
 
+    on_computer_turn();
+
     setTimeout(() => {
         hideHigherOrLowerBox(); // Hide the box after 3 seconds
-    }, 3000);
+    }, 10000);
 
-    on_computer_turn();
-    compare_stats(statId,userChoice);
+    
+    setTimeout(() => {
+        compare_stats(statId,userChoice);
+    }, 10000);
 });
 
 
