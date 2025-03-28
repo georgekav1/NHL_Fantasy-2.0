@@ -75,6 +75,15 @@ The API documentation will provide detailed information about each route, availa
 
 ---
 
+## Testing
+```bash
+pip install pytest
+```
+
+```bash
+pytest tests/app_tests.py
+```
+
 ## Contributing
 
 We welcome contributions to this project! If you would like to contribute, please follow these steps:
