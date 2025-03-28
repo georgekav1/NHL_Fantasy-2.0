@@ -109,9 +109,15 @@ h3 {
     clear: both;
 }
 
-.column-card-left,
-.column-card-right {
+.column-card-left
+{
     float: left;
+    width: 50%; /* Default width is 50% */
+    transition: width 0.3s ease; /* Smooth transition for width changes */
+}
+
+.column-card-right {
+    float: right;
     width: 50%; /* Default width is 50% */
     transition: width 0.3s ease; /* Smooth transition for width changes */
 }

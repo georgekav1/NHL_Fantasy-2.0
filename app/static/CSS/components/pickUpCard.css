@@ -51,7 +51,7 @@ body {
   height: 100vh;
 }
 
-@media screen and (max-width: 430px), (max-height: 932px) {
+@media screen and (max-width: 430px){
   .pickUpButton {
     font-size: 30px;
     /* Adjust font size for smaller screens */

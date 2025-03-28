@@ -107,7 +107,7 @@ async function on_computer_turn() {
         flipcard();
         await populateCard("opp", oppStats);
         console.log("card populated");
-    }, 1000); // 3-second delay to allow the higher or lower box to disappear
+    }, 3000); // 3-second delay to allow the higher or lower box to disappear
 }
 
 function flipcard(){

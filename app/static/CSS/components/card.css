@@ -334,8 +334,8 @@ body {
 }
 
 /* Responsive styling for smaller screens */
-@media screen and (max-width: 430px),
-(max-height: 932px) {
+@media screen and (max-width: 430px)
+{
 
     .column-card-left,
     .column-card-right,

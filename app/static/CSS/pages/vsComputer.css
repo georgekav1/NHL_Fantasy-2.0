@@ -54,7 +54,7 @@
     transform: scale(1.2);
 }
 
-@media screen and (max-width: 430px), (max-height: 932px) {
+@media screen and (max-width: 430px){
     #Title {
         font-size: 30px; /* Adjust font size for smaller screens */
     }
